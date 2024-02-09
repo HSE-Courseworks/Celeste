@@ -193,13 +193,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 390031807}
     - target: {fileID: 8140925954659938209, guid: 210168ccda4323e4ead2d2a015253987, type: 3}
-      propertyPath: m_Lens.OrthographicSize
-      value: 11
+      propertyPath: m_Lens.FieldOfView
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4389359451174801172, guid: 210168ccda4323e4ead2d2a015253987, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1102473053}
   m_SourcePrefab: {fileID: 100100000, guid: 210168ccda4323e4ead2d2a015253987, type: 3}
 --- !u!1001 &232590284
 PrefabInstance:
@@ -253,6 +256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room  (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8140925954659938209, guid: 210168ccda4323e4ead2d2a015253987, type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 390031807}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -569,6 +576,23 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1102473049 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4389359451174801172, guid: 210168ccda4323e4ead2d2a015253987, type: 3}
+  m_PrefabInstance: {fileID: 226628893}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1102473053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102473049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1297442094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -579,11 +603,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7596022410666147711, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7596022410666147711, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7596022410666147711, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -618,8 +642,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8352576594815693447, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352576594815693447, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
+      propertyPath: field of view
+      value: 0.86795497
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352576594815693447, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
       propertyPath: orthographic size
-      value: 16.051868
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8352576594815693447, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -639,7 +671,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8672944851338647522, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672944851338647522, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
+      propertyPath: m_UpscaleRT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672944851338647522, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
+      propertyPath: m_CropFrameX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672944851338647522, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
+      propertyPath: m_CropFrameY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672944851338647522, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
+      propertyPath: m_PixelSnapping
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672944851338647522, guid: 649d2b580d5a72640bfa7d33d70e461f, type: 3}
+      propertyPath: m_RefResolutionX
+      value: 320
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
