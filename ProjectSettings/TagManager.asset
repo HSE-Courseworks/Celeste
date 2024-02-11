@@ -13,7 +13,7 @@ TagManager:
   - Obstacle
   - Water
   - UI
-  - Background
+  - 
   - 
   - 
   - 
@@ -40,17 +40,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Backgrd
-    uniqueID: 1235487617
+  - name: Sky
+    uniqueID: 963608159
     locked: 0
-  - name: Backgrd1
-    uniqueID: 1916422247
+  - name: Clouds
+    uniqueID: 714126187
     locked: 0
-  - name: Backgrd2
-    uniqueID: 2487415629
+  - name: Mountain
+    uniqueID: 4286877459
     locked: 0
-  - name: Backgrd3
-    uniqueID: 4094924791
+  - name: Grass
+    uniqueID: 2050786135
     locked: 0
   - name: Default
     uniqueID: 0
