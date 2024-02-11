@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841307083464513713}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -76.1, y: -38.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -125,7 +125,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: 1f0a099d791233140ab0e54e919594a7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -169,7 +169,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0011515021, y: -0.0771811}
+  m_Offset: {x: -0.011444092, y: -0.058229446}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -180,7 +180,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2872068, y: 2.1647143}
+  m_Size: {x: 1.138092, y: 2.112629}
   m_EdgeRadius: 0
 --- !u!114 &8981525126009049657
 MonoBehaviour:
@@ -197,12 +197,13 @@ MonoBehaviour:
   state: 0
   horizontalInput: 0
   verticalInput: 0
-  MoveSpeed: 7
+  MoveSpeed: 10
   ClimbUpSpeed: 2
   ClimbDownSpeed: 5
   ClimbSlip: -0.5
-  jumpForce: 10
+  jumpForce: 16
   jumpBorder: 0.3
+  fallForce: 3
   rb: {fileID: 0}
   obstacleLayer: Obstacle
   killerTag: killer
