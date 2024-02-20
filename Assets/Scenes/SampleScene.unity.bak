@@ -1412,10 +1412,18 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1575625572}
+<<<<<<< HEAD
+  - component: {fileID: 1575625571}
+  - component: {fileID: 1575625570}
+  - component: {fileID: 1575625569}
+  m_Layer: 5
+  m_Name: Canvas
+=======
   - component: {fileID: 1948422661}
   - component: {fileID: 1948422662}
   m_Layer: 0
   m_Name: bg4 (2)
+>>>>>>> 0237723186bc42bb034cb8e7b92edae3ca58503b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1427,6 +1435,19 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1575625568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+=======
   m_GameObject: {fileID: 1948422659}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1435,28 +1456,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 390031807}
   index: 1
+>>>>>>> 0237723186bc42bb034cb8e7b92edae3ca58503b
 --- !u!114 &1575625570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1575625568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+=======
   m_GameObject: {fileID: 1948422659}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+>>>>>>> 0237723186bc42bb034cb8e7b92edae3ca58503b
 --- !u!223 &1575625571
 Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1575625568}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+=======
   m_GameObject: {fileID: 1948422659}
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
+>>>>>>> 0237723186bc42bb034cb8e7b92edae3ca58503b
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1465,7 +1514,11 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+<<<<<<< HEAD
+  m_AdditionalShaderChannelsFlag: 0
+=======
   m_AdditionalShaderChannelsFlag: 25
+>>>>>>> 0237723186bc42bb034cb8e7b92edae3ca58503b
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1558,6 +1611,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+=======
 --- !u!1 &1597780164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,6 +2554,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+>>>>>>> 0237723186bc42bb034cb8e7b92edae3ca58503b
 --- !u!1 &1966293951
 GameObject:
   m_ObjectHideFlags: 0
@@ -11435,6 +11491,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+<<<<<<< HEAD
+=======
 --- !u!1 &2004943760
 GameObject:
   m_ObjectHideFlags: 0
@@ -11471,6 +11529,7 @@ Transform:
   - {fileID: 1326312771}
   m_Father: {fileID: 1123793400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> 0237723186bc42bb034cb8e7b92edae3ca58503b
 --- !u!224 &2006486163 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2276110767101697295, guid: 35680c5604ee4e845b5da30008a51aa9, type: 3}
@@ -11869,6 +11928,10 @@ SceneRoots:
   - {fileID: 5651448121470269997}
   - {fileID: 2052587358}
   - {fileID: 283040676}
+<<<<<<< HEAD
+  - {fileID: 1577647897}
+=======
   - {fileID: 1123793400}
   - {fileID: 1200245120}
+>>>>>>> 0237723186bc42bb034cb8e7b92edae3ca58503b
   - {fileID: 1575625572}

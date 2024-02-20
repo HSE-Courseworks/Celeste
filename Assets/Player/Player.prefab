@@ -195,18 +195,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  horizontalInput: 0
-  verticalInput: 0
   MoveSpeed: 10
-  ClimbUpSpeed: 2
-  ClimbDownSpeed: 5
-  ClimbSlip: -0.5
+  climbUpSpeed: 5
+  climbDownSpeed: -7
+  climbSlip: -2
   jumpForce: 16
   jumpBorder: 0.3
   fallForce: 3
-  rb: {fileID: 0}
-  obstacleLayer: Obstacle
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
   killerTag: killer
+  stateText: {fileID: 0}
+  onGroundText: {fileID: 0}
+  collisionRadius: 0.05
+  bottomOffset: {x: 0, y: -1.11}
+  rightOffset: {x: 0.56, y: -0.6}
+  leftOffset: {x: -0.58, y: -0.6}
+  tossAsideDelay: 1
+  rightBottomOffset: {x: 0.56, y: -1}
+  rightMiddleOffset: {x: 0.56, y: -0.5}
+  leftBottomOffset: {x: -0.58, y: -1}
+  leftMiddleOffset: {x: -0.58, y: -0.5}
+  jumpSmoke: {fileID: 1631215358783872310, guid: d391a91b30470e54baed30b13baf86d1, type: 3}
 --- !u!114 &8185900330927216572
 MonoBehaviour:
   m_ObjectHideFlags: 0
