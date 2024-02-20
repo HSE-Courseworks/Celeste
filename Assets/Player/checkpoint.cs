@@ -20,10 +20,7 @@ public class checkpoint : MonoBehaviour
     {
         if(other.gameObject.name == "Player")
         {
-            if (index > StaticData.checkpoint_num)
-            {
-                StaticData.checkpoint_num = index;
-            }
+            StaticData.checkpoint_num = index;
         }
     }
 }
