@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2414846180141217089}
   - component: {fileID: 9063213176072532542}
   - component: {fileID: 6937731109202184283}
+  - component: {fileID: 7833600513461946974}
   - component: {fileID: 7110182204618837986}
-  m_Layer: 0
-  m_Name: JumpSmoke
+  m_Layer: 7
+  m_Name: Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,8 +94,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1954847865
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 1120549231, guid: d394ae014fa4ac4479aeb9b76a5c78ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,6 +108,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7833600513461946974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631215358783872310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c8fbe0bb9bfd641a2e5b8de5931e59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7110182204618837986
 MonoBehaviour:
   m_ObjectHideFlags: 0

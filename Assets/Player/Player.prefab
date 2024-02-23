@@ -217,7 +217,15 @@ MonoBehaviour:
   rightMiddleOffset: {x: 0.56, y: -0.5}
   leftBottomOffset: {x: -0.58, y: -1}
   leftMiddleOffset: {x: -0.58, y: -0.5}
-  jumpSmoke: {fileID: 1631215358783872310, guid: d391a91b30470e54baed30b13baf86d1, type: 3}
+  dustGameObject: {fileID: 1631215358783872310, guid: d391a91b30470e54baed30b13baf86d1, type: 3}
+  jumpingDustOffset: {x: 0, y: -0.5, z: 0}
+  landingDustOffset: {x: 0, y: -0.6, z: 0}
+  clouds: {fileID: 0}
+  mountains: {fileID: 0}
+  grass: {fileID: 0}
+  cloudsMoveSpeed: 0.001
+  mountainsMoveSpeed: 0.0001
+  grassMoveSpeed: 0
 --- !u!114 &8185900330927216572
 MonoBehaviour:
   m_ObjectHideFlags: 0

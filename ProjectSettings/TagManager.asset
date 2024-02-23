@@ -13,8 +13,8 @@ TagManager:
   - Obstacle
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Particles
   - 
   - 
   - 
@@ -54,4 +54,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Dust
+    uniqueID: 2340119431
     locked: 0

@@ -1,3 +1,7 @@
+using System;
+using System.Collections;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,6 +26,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float climbSlip = -2f;
     
     [Header("Jump")]
+    private float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
+
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+    
     [SerializeField] private float jumpForce = 7;
     [SerializeField] private float jumpBorder = .3f;
     [SerializeField] private float fallForce = 3;
@@ -39,12 +49,16 @@ public class Player : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private Text stateText;
     [SerializeField] private Text onGroundText;
+    [SerializeField] private Text fatigueText;
     private string textState = "";
     private string textOnGround = "";
+    private string textFatigue = "";
 
     private bool onWall;
     private bool onGround;
     private bool onPullUp;
+
+    private bool landed;
 
     private bool jumpPressed;
     private bool grabPressed;
@@ -71,8 +85,11 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector2 leftMiddleOffset; 
 
     [Header("Particles")]
-    [SerializeField] private GameObject jumpSmoke;
-    [SerializeField] private Vector3 jumpSmokeOffset; 
+    [SerializeField] private GameObject dustGameObject;
+    [SerializeField] private Vector3 jumpingDustOffset; 
+    [SerializeField] private Vector3 landingDustOffset; 
+
+    private GameObject dust;
 
     [Header("Pseudo Parallax")]
     [SerializeField] private GameObject clouds;
@@ -82,11 +99,23 @@ public class Player : MonoBehaviour
     [SerializeField] private float mountainsMoveSpeed;
     [SerializeField] private float grassMoveSpeed;
 
+    [Header("Fatigue")]
+
+    private float fatigue = 0;
+    [SerializeField] private float maxFatigue = 10f;
+
+    //
+    private Color playerColor;
+    bool isFlashing = false;
+    [SerializeField] private float flashingFrequency = 0.2f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
+
+        playerColor = sprite.color;
 
         basicGravityScale = rb.gravityScale;
     }
@@ -96,7 +125,11 @@ public class Player : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
+        bool onGroundBeforeUpdate = onGround;
+    
         onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);
+
+        landed = !onGroundBeforeUpdate && onGround;
 
         onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer) ||
             Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
@@ -112,9 +145,10 @@ public class Player : MonoBehaviour
         climbUp = Input.GetKey(KeyCode.UpArrow);
         climbDown = Input.GetKey(KeyCode.DownArrow);
 
-        //Debug.Log("On ground: " + onGround);
-        //Debug.Log("On wall: " + onWall);
-        Debug.Log("On pull up: " + onPullUp);
+
+        timeCoyotize();
+        jumpBufferize();
+
 
 
         //Debug
@@ -129,15 +163,61 @@ public class Player : MonoBehaviour
             textOnGround = "False";
         }
         onGroundText.text = "OnGround: " + textOnGround;
+
+        fatigueText.text = "Fatigue: " + Math.Round(fatigue, 1) + "/" + maxFatigue;
+    }
+
+    IEnumerator flashPlayer()
+    {
+        isFlashing = true;
+
+        while(fatigue >= maxFatigue)
+        {
+            if (sprite.color == playerColor)
+            {
+                sprite.color = Color.red;
+            }
+            else
+            {
+                sprite.color = playerColor;
+            }
+
+            yield return new WaitForSeconds(flashingFrequency);
+        }
+
+        isFlashing = false;
+        sprite.color = playerColor;
+
+        yield break;
     }
 
     void FixedUpdate()
     {
         state = getState();
-        Move();
-        Flip();
 
-        PseudoParallax();
+        if (state != State.grab && state != State.climbUp && state != State.climbDown)
+        {
+            Move();
+            Flip();
+        }
+
+
+        if (landed)
+        {
+            spawnLandingDust();
+        }
+
+        if (onGround)
+        {
+            fatigue = 0f;
+        }
+
+        if (fatigue >= maxFatigue && !isFlashing)
+        {  
+            StartCoroutine(flashPlayer());
+        }
+
+        //PseudoParallax();
     }
 
     private State getState()
@@ -165,6 +245,7 @@ public class Player : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 0f);
             Jump();
+            fatigue += 2.5f;
 
             wallJump = true;
 
@@ -176,11 +257,22 @@ public class Player : MonoBehaviour
         {
             rb.gravityScale = 0;
             rb.velocity = new Vector2(rb.velocity.x, 0f);
-            if (climbUp)
+
+            if (fatigue >= maxFatigue)
+            {
+                textState = "Slip";        
+
+                rb.velocity = new Vector2(rb.velocity.x, climbSlip);    
+
+                return State.climbDown;
+            }
+            else if (climbUp)
             {
                 rb.velocity = new Vector2(rb.velocity.x, climbUpSpeed);
 
                 textState = "ClimbUp";
+
+                fatigue += Time.deltaTime;
                 return State.climbUp;
             }
             else if (climbDown)
@@ -188,18 +280,24 @@ public class Player : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, climbDownSpeed);
 
                 textState = "ClimbDown";
+        
+                fatigue += Time.deltaTime;
                 return State.climbDown;
             }
 
             textState = "Grab";
+
+            fatigue += Time.deltaTime;
             return State.grab;   
         }
 
-        if (onGround && jumpPressed)
+        if ((coyoteTimeCounter > 0f) && (jumpBufferCounter > 0f))
         {
             Jump();   
-            spawnJumpSmoke();
+            spawnJumpingDust();
+
             textState = "Jump";
+
             return State.jump;
         }
 
@@ -225,6 +323,31 @@ public class Player : MonoBehaviour
 
         textState = "Idle";
         return State.idle;
+    }
+
+
+    private void timeCoyotize()
+    {
+        if (onGround)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+    }
+
+    private void jumpBufferize()
+    {
+        if (jumpPressed)
+        {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
     }
 
     private void PseudoParallax()
@@ -267,6 +390,7 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        jumpBufferCounter = 0f;
     }
 
 /*
@@ -336,8 +460,15 @@ public class Player : MonoBehaviour
 
     //Particles
 
-    void spawnJumpSmoke()
+    void spawnJumpingDust()
     {
-        Instantiate(jumpSmoke, transform.position + jumpSmokeOffset,  Quaternion.identity);
+        dust = Instantiate(dustGameObject, transform.position + jumpingDustOffset,  Quaternion.identity);
+        dust.GetComponent<Dust>().playJumpingDustAnimation();
+    }
+
+    void spawnLandingDust()
+    {
+        dust = Instantiate(dustGameObject, transform.position + landingDustOffset,  Quaternion.identity);
+        dust.GetComponent<Dust>().playLandingDustAnimation();
     }
 }
