@@ -26,14 +26,14 @@ public class DialogueAnimator : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerIsClose && !dialogueStarted)
-        {
-            dialogueStarted = true;
-            dialogue.TriggerDialogue();
-        }
         if (Input.GetKeyDown(KeyCode.E) && dialogueStarted)
         {
             manager.DisplayNextSentence();
+        }
+        if (Input.GetKeyDown(KeyCode.E) && playerIsClose && !dialogueStarted)
+        {
+            dialogue.TriggerDialogue();
+            dialogueStarted = true;
         }
     }
 
