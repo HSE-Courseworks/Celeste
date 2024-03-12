@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerInput : MonoBehaviour
     public float horizontalInput = 0;
     [HideInInspector] 
     public float verticalInput = 0;
+    [HideInInspector]
+    public float climbInput = 0;
 
     [HideInInspector] 
     public bool jumpPressed;
@@ -15,24 +18,27 @@ public class PlayerInput : MonoBehaviour
     public bool dashPressed;
     [HideInInspector] 
     public bool grabPressed;
-    
-    [HideInInspector] 
-    public bool climbUp;
-    [HideInInspector] 
-    public bool climbDown;
 
-    // Update is called once per frame
-    void Update()
+    public void Move(InputAction.CallbackContext context)
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-        
-        jumpPressed = Input.GetKeyDown(KeyCode.Space);
-        dashPressed = Input.GetKeyDown(KeyCode.LeftShift);
-        grabPressed = Input.GetKey(KeyCode.LeftControl);
+        Vector2 axis = context.ReadValue<Vector2>();
 
-        climbUp = Input.GetKey(KeyCode.UpArrow);
-        climbDown = Input.GetKey(KeyCode.DownArrow);
+        horizontalInput = Mathf.Round(axis.x);
+        verticalInput = Mathf.Round(axis.y);
+    }
 
+    public void Jump(InputAction.CallbackContext context)
+    {
+        jumpPressed = context.performed;
+    }
+
+    public void Dash(InputAction.CallbackContext context)
+    {
+        dashPressed = context.performed;
+    }
+
+    public void Grab(InputAction.CallbackContext context)
+    {
+        grabPressed = context.performed;
     }
 }

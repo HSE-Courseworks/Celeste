@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
         {
             case PlayerState.State.dash:
             {
-                if (!dash.isDashing)
+                if (!dash.hasDashed)
                 {
                     dash.DashStart();
                 }
