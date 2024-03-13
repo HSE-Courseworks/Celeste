@@ -17,6 +17,7 @@ public class PlayerDash : MonoBehaviour
     private PlayerInput input;
     private Player player;
     private PlayerParticles particles;
+    private RumbleManager rumble;
 
     [SerializeField] private float dashTime = 0.2f;
     private float dashTimeCounter;
@@ -37,6 +38,7 @@ public class PlayerDash : MonoBehaviour
         input = GetComponent<PlayerInput>();
         player = GetComponent<Player>();
         particles = GetComponent<PlayerParticles>();
+        rumble = GetComponent<RumbleManager>();
     }
 
     void Update()
@@ -88,6 +90,8 @@ public class PlayerDash : MonoBehaviour
 
     public void DashStart()
     {
+        rumble.DashRumblePulse();
+
         StartCoroutine(DashManager());
         particles.spawnDashDust();
     }
