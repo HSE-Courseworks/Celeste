@@ -11,9 +11,42 @@ public class PlayerParticles : MonoBehaviour
 
     [SerializeField] private GameObject dustGameObject;
 
-    [SerializeField] private ParticleSystem dashDust;
+    [SerializeField] private GameObject dashDustObject;
+    [SerializeField] private ParticleSystem dashTail;
 
-    // Update is called once per frame
+    [SerializeField] private float dashDustSpeed = 0.5f;
+
+    //ParticleSystem.Particle[] dashDustParticles;
+
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        /*
+        InitializeIfNeeded();   
+    
+        int numParticlesAlive = dashDust.GetParticles(dashDustParticles);
+        
+        Vector2 playerDirection = new Vector2(-rb.velocity.x, -rb.velocity.y);
+
+        for (int i = 0; i < numParticlesAlive; i++)
+        {
+            if (dashDustParticles[i].velocity == Vector3.zero)
+            {
+                //dashDustParticles[i].velocity = playerDirection;
+                Debug.Log(dashDustParticles[i].velocity);
+            }
+
+        }        
+        
+        dashDust.SetParticles(dashDustParticles, numParticlesAlive); */
+    }
+
     public void spawnJumpingDust()
     {
         Instantiate(dustGameObject, transform.position + jumpingDustOffset,  Quaternion.identity);
@@ -24,9 +57,29 @@ public class PlayerParticles : MonoBehaviour
         Instantiate(dustGameObject, transform.position + jumpingDustOffset,  Quaternion.identity);
     }
 
+    public void spawnDashTail()
+    {
+        dashTail.time = 0;
+        dashTail.Play();
+    }
+
     public void spawnDashDust()
     {
-        dashDust.time = 0;
-        dashDust.Play();
+        GameObject newObj = Instantiate(dashDustObject, transform.position, Quaternion.identity);
+        newObj.transform.parent = transform;
+        ParticleSystem particleSystem = newObj.GetComponent<ParticleSystem>();
+
+        var velocityOverLifetime = particleSystem.velocityOverLifetime;
+        velocityOverLifetime.xMultiplier = rb.velocity.x * dashDustSpeed;
+        velocityOverLifetime.yMultiplier = rb.velocity.y * dashDustSpeed;
     }
+
+/*
+    void InitializeIfNeeded()
+    {
+        if (dashDustParticles == null || dashDustParticles.Length < dashDust.main.maxParticles)
+        {
+            dashDustParticles = new ParticleSystem.Particle[dashDust.main.maxParticles];
+        }
+    }*/
 }

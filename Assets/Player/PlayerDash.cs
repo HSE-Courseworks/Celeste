@@ -45,8 +45,6 @@ public class PlayerDash : MonoBehaviour
     {
         dashTimeUpdate();
         inputBufferTimeUpdate();
-
-        Debug.Log("hasDashed: " + hasDashed);
     }
 
     public bool dashCanBeDone()
@@ -93,6 +91,7 @@ public class PlayerDash : MonoBehaviour
         rumble.DashRumblePulse();
 
         StartCoroutine(DashManager());
+        particles.spawnDashTail();
         particles.spawnDashDust();
     }
 

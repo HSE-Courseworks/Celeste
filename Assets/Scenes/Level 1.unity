@@ -18474,25 +18474,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1693788855033812160, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1841307083464513713, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3168303301474607836, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
-      propertyPath: dashTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3168303301474607836, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
-      propertyPath: dashTimer
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3168303301474607836, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
-      propertyPath: dashLength
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3168303301474607836, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
-      propertyPath: inputBufferTime
-      value: 0.2
+    - target: {fileID: 3850835722005127564, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5281784093990877296, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18534,6 +18526,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5730938631529822987, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
+      propertyPath: dashDustSpeed
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730938631529822987, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
+      propertyPath: dashDustObject
+      value: 
+      objectReference: {fileID: 4417265560345549531, guid: 91088be324a9bda469ef5f638c6901b0, type: 3}
+    - target: {fileID: 6678451836466206562, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
+      propertyPath: lengthInSec
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8981525126009049657, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
       propertyPath: stateText
       value: 
@@ -18547,148 +18551,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1106859396}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3850835722005127564, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1841307083464513713, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 911635095}
-    - targetCorrespondingSourceObject: {fileID: 1841307083464513713, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 911635076}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
 --- !u!4 &911635074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5281784093990877296, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
   m_PrefabInstance: {fileID: 911635073}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &911635075 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1841307083464513713, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
-  m_PrefabInstance: {fileID: 911635073}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &911635076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911635075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: fd167c163ec6c30469dd8c5c63cf0d54, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 911635079}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b1b69c3b-470b-4517-8d24-a76a8c9808b0
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 911635079}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5e4a2b10-161c-4f0d-b9b8-87d937fb413f
-    m_ActionName: Player/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 911635079}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: Dash
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ee2f8890-0341-4f0f-94b4-93986e579707
-    m_ActionName: Player/Dash[/Keyboard/leftShift]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 911635079}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: Grab
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2e42d6bb-1e61-400f-998a-caa585f2d353
-    m_ActionName: Player/Grab[/Keyboard/leftCtrl]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &911635079 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4075526309102265388, guid: 7fdc3cfe15596ca45be70598e1497a41, type: 3}
-  m_PrefabInstance: {fileID: 911635073}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911635075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 943691e3922102f468179a18c957f80b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &911635095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911635075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c34fc250b0f0324294253c66d34cd59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashLowFrequency: 0.7
-  dashHighFrequency: 0.8
-  dashRumbleDuration: 0.4
-  fatigueLowFrequency: 0.1
-  fatigueHighFrequency: 0.16
 --- !u!1001 &919873578
 PrefabInstance:
   m_ObjectHideFlags: 0
