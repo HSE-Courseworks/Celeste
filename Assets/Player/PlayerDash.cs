@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 
@@ -8,11 +6,12 @@ public class PlayerDash : MonoBehaviour
 {
     [HideInInspector]
     public bool isDashing = false;
+
     [HideInInspector]
     public bool hasDashed = false;
 
     [SerializeField] private float dashPower = 10f;
-    [SerializeField] private float dashTimer = 1f;
+    [SerializeField] private float dashLength = 1f;
 
     private Rigidbody2D rb;
     private PlayerJump jump;
@@ -21,10 +20,10 @@ public class PlayerDash : MonoBehaviour
     private PlayerParticles particles;
     private RumbleManager rumble;
 
-    private float dashTime = 0.2f;
+    [SerializeField] private float dashTime = 0.2f;
     private float dashTimeCounter;
 
-    private float inputBufferTime = 0.2f;
+    [SerializeField] private float inputBufferTime = 0.2f;
     private float inputBufferTimeCounter;
 
     private float horizontalBuffer;
@@ -54,6 +53,7 @@ public class PlayerDash : MonoBehaviour
         if (dashTimeCounter > 0f && inputBufferTimeCounter > 0f)
         {
             inputBufferTimeCounter = 0;
+            dashTimeCounter = 0;
             return true;
         }
 
@@ -65,6 +65,7 @@ public class PlayerDash : MonoBehaviour
         if (input.horizontalInput != 0 || input.verticalInput != 0)
         {
             inputBufferTimeCounter = inputBufferTime;
+
             horizontalBuffer = input.horizontalInput;
             verticalBuffer = input.verticalInput;
         }
@@ -87,10 +88,11 @@ public class PlayerDash : MonoBehaviour
     }
 
     public void DashStart()
-    {   
-        rumble.RumblePulse();
+    {
+        rumble.DashRumblePulse();
 
         StartCoroutine(DashManager());
+        particles.spawnDashTail();
         particles.spawnDashDust();
     }
 
@@ -98,12 +100,13 @@ public class PlayerDash : MonoBehaviour
     {
         isDashing = true;
         hasDashed = true;
+
         jump.nullifyGravity();
         rb.velocity = Vector2.zero;
         Dash();
 
         float timer = 0;
-        while (timer < dashTimer)
+        while (timer < dashLength)
         {
             timer += 0.1f;
             spawnShadow();
@@ -137,6 +140,9 @@ public class PlayerDash : MonoBehaviour
 
     public void dashRefresh()
     {
-        hasDashed = false;
+        if (!isDashing)
+        {
+            hasDashed = false;
+        }
     }
 }

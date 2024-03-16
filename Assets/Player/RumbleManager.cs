@@ -14,16 +14,36 @@ public class RumbleManager : MonoBehaviour
     [SerializeField] private float fatigueLowFrequency = 0.2f;
     [SerializeField] private float fatigueHighFrequency = 0.35f;
 
+    public bool isRumbling = false;
+
     private Gamepad pad;
-    public void RumblePulse()
+
+    void OnDisable()
+    {
+        StopRumble();
+    }
+
+    void Update()
+    {
+        if (!isRumbling)
+        {
+            StopRumble();
+        }   
+    }
+
+    public void DashRumblePulse()
     {
         pad = Gamepad.current;
 
-        pad.SetMotorSpeeds(dashLowFrequency, dashHighFrequency);       
-        StartCoroutine(StopRumble(pad));
+        if (pad != null)
+        {
+            isRumbling = true;
+            pad.SetMotorSpeeds(dashLowFrequency, dashHighFrequency);       
+            StartCoroutine(StopDashRumble(pad));
+        }
     }
 
-    private IEnumerator StopRumble(Gamepad pad) 
+    private IEnumerator StopDashRumble(Gamepad pad) 
     {
         float elapsedTime = 0f;
 
@@ -34,21 +54,41 @@ public class RumbleManager : MonoBehaviour
         }
 
         pad.SetMotorSpeeds(0f, 0f);
+        isRumbling = false;
     }
 
     public void startFatigueRumble()
     {
         pad = Gamepad.current;
-        pad.SetMotorSpeeds(fatigueLowFrequency, fatigueHighFrequency);    
+
+        if (pad != null)
+        {
+            isRumbling = true;
+            pad.SetMotorSpeeds(fatigueLowFrequency, fatigueHighFrequency); 
+        }
+   
     }
 
     public void endFatigueRumble()
     {
-        pad.SetMotorSpeeds(0f, 0f);
+        pad = Gamepad.current;
+
+        StopRumble();
     }
 
     void OnApplicationQuit()
     {
-        pad.SetMotorSpeeds(0f, 0f);
+        pad = Gamepad.current;
+
+        StopRumble();
+    }
+
+    public void StopRumble()
+    {
+        if (pad != null)
+        {
+            isRumbling = false;
+            pad.SetMotorSpeeds(0f, 0f);
+        }   
     }
 }

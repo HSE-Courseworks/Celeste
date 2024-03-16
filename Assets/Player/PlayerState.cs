@@ -57,11 +57,11 @@ public class PlayerState : MonoBehaviour
             {
                 return State.slip;
             }
-            else if (input.climbInput > 0)
+            else if (input.verticalInput > 0f)
             {
                 return State.climbUp;
             }
-            else if (input.climbInput < 0)
+            else if (input.verticalInput < 0f)
             {
                 return State.climbDown;
             }

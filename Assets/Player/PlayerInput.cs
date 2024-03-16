@@ -41,11 +41,4 @@ public class PlayerInput : MonoBehaviour
     {
         grabPressed = context.performed;
     }
-
-    public void Climb(InputAction.CallbackContext context)
-    {
-        Vector2 axis = context.ReadValue<Vector2>();
-
-        climbInput = Mathf.Round(axis.y);
-    }
 }

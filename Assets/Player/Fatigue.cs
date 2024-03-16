@@ -32,6 +32,8 @@ public class Fatigue : MonoBehaviour
         isFlashing = true;
         rumble.startFatigueRumble();
 
+        rumble.startFatigueRumble();
+
         while(fatigue >= maxFatigue)
         {
             if (sprite.color == playerColor)
@@ -43,12 +45,19 @@ public class Fatigue : MonoBehaviour
                 sprite.color = playerColor;
             }
 
+            if (rumble.isRumbling == false) 
+            {
+                rumble.startFatigueRumble();
+            }
+
             yield return new WaitForSeconds(flashingFrequency);
         }
 
         isFlashing = false;
         rumble.endFatigueRumble();
         sprite.color = playerColor;
+
+        rumble.endFatigueRumble();
 
         yield break;
     }

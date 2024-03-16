@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
     [Header("Jump")]
-    private float jumpBufferTime = 0.2f;
+    public float jumpBufferTime = 0.2f;
     public float jumpBufferCounter;
 
-    private float coyoteTime = 0.2f;
+    public float coyoteTime = 0.2f;
     public float coyoteTimeCounter;
     
     [SerializeField] private float jumpForce = 7;
@@ -36,7 +36,7 @@ public class PlayerJump : MonoBehaviour
 
     public void timeCoyotize()
     {
-        if (indicators.onGround)
+        if (indicators.onGround || indicators.onWall)
         {
             coyoteTimeCounter = coyoteTime;
         }
