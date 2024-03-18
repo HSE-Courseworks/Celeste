@@ -6,7 +6,7 @@ on:
       - dev
   pull_request:
     branches:
-      - ${{ github.head_ref }}
+      - main
 
 jobs:
   build-and-test:
