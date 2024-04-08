@@ -4,19 +4,69 @@ on:
   push:
     branches:
       - dev
-  pull_request:
-    branches:
-      - main
+  pull_request: {}
 
 jobs:
-  build-and-test:
+  checkout:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        
+  configure:
+    runs-on: ubuntu-latest
 
+    steps:
       - name: Return license
         uses: game-ci/unity-return-license@v4
         if: always()
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: ${{ runner.os }}-unity-${{ hashFiles('**/ProjectSettings/ProjectVersion.txt') }}
+
+
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy: 
+      fail-fast: false
+      matrix:
+        projectPath:
+          - ./Assets
+        testMode:
+          - playmode
+          - editmode
+          - standalone
+          
+    steps:
+      - name: Test runner
+      - uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: ./Assets
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          packageMode: true
+          unityVersion: 2022.3.17f1
+
+      - name: Store artifacts
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          path: ${{ steps.gameTestStep.outputs.artifactsPath }}
+
+      - name: Coverage results
+      - uses: actions/uploads-artifact@v3
+        if: always()
+        with:
+          path: ${{ steps.gameTestStep.outputs.coveragePath }}
+
+      - uses: game-ci/unity-test-runner@v4
+        id: gameTestStep
+
+      
         
