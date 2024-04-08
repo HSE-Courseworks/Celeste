@@ -15,3 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Return license
+        uses: game-ci/unity-return-license@v4
+        if: always()
+        
