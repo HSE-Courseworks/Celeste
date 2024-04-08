@@ -22,20 +22,20 @@ jobs:
 
     steps:
       - name: Checkout repository
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
     
       - name: Return license
-      - uses: game-ci/unity-return-license@v4
+        uses: game-ci/unity-return-license@v4
         if: always()
 
       - name: Cache dependencies
-      - uses: actions/cache@v3
+        uses: actions/cache@v3
         with:
           path: Library
           key: ${{ runner.os }}-unity-${{ hashFiles('**/ProjectSettings/ProjectVersion.txt') }}
           
       - name: Test runner
-      - uses: game-ci/unity-test-runner@v4
+        uses: game-ci/unity-test-runner@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
@@ -45,13 +45,13 @@ jobs:
           unityVersion: 2022.3.17f1
 
       - name: Store artifacts
-      - uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           path: ${{ steps.gameTestStep.outputs.artifactsPath }}
 
       - name: Coverage results
-      - uses: actions/uploads-artifact@v3
+        uses: actions/uploads-artifact@v3
         if: always()
         with:
           path: ${{ steps.gameTestStep.outputs.coveragePath }}
@@ -60,7 +60,7 @@ jobs:
         id: gameTestStep
         
       - name: Build repository
-      - uses: game-ci/unity-builder@v4
+        uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
