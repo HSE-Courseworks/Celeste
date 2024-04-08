@@ -7,31 +7,9 @@ on:
   pull_request: {}
 
 jobs:
-  checkout:
+  build-and-test:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-      - uses: actions/checkout@v4
-        
-  configure:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Return license
-      - uses: game-ci/unity-return-license@v4
-        if: always()
-
-      - name: Cache dependencies
-      - uses: actions/cache@v3
-        with:
-          path: Library
-          key: ${{ runner.os }}-unity-${{ hashFiles('**/ProjectSettings/ProjectVersion.txt') }}
-
-
-  test:
-    runs-on: ubuntu-latest
-    
     strategy: 
       fail-fast: false
       matrix:
@@ -41,8 +19,21 @@ jobs:
           - playmode
           - editmode
           - standalone
-          
+
     steps:
+      - name: Checkout repository
+      - uses: actions/checkout@v4
+    
+      - name: Return license
+      - uses: game-ci/unity-return-license@v4
+        if: always()
+
+      - name: Cache dependencies
+      - uses: actions/cache@v3
+        with:
+          path: Library
+          key: ${{ runner.os }}-unity-${{ hashFiles('**/ProjectSettings/ProjectVersion.txt') }}
+          
       - name: Test runner
       - uses: game-ci/unity-test-runner@v4
         env:
@@ -67,11 +58,7 @@ jobs:
 
       - uses: game-ci/unity-test-runner@v4
         id: gameTestStep
-
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
+        
       - name: Build repository
       - uses: game-ci/unity-builder@v4
         env:
