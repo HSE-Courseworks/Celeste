@@ -51,7 +51,7 @@ jobs:
           path: ${{ steps.gameTestStep.outputs.artifactsPath }}
 
       - name: Coverage results
-        uses: actions/uploads-artifact@v3
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           path: ${{ steps.gameTestStep.outputs.coveragePath }}
