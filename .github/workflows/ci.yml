@@ -12,18 +12,18 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         
   configure:
     runs-on: ubuntu-latest
 
     steps:
       - name: Return license
-        uses: game-ci/unity-return-license@v4
+      - uses: game-ci/unity-return-license@v4
         if: always()
 
       - name: Cache dependencies
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         with:
           path: Library
           key: ${{ runner.os }}-unity-${{ hashFiles('**/ProjectSettings/ProjectVersion.txt') }}
@@ -50,7 +50,7 @@ jobs:
         with:
           projectPath: ./Assets
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          packageMode: true
+          packageMode: false
           unityVersion: 2022.3.17f1
 
       - name: Store artifacts
