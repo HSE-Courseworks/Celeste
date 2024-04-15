@@ -12,6 +12,30 @@ env:
     UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
 jobs:
+  check-code-style:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '6.0.102'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Check code style
+      run: dotnet tool install --global StyleCop.Analyzers --version 3.0.2
+
+    - run: dotnet build /p:AdditionalAnalyzers="StyleCop.Analyzers" --no-restore
+
+    - name: Run tests
+      run: dotnet test --no-build --verbosity normal
   build-and-test:
     runs-on: ubuntu-latest
 
@@ -77,6 +101,7 @@ jobs:
         
       - name: Build repository
         uses: game-ci/unity-builder@v4
+
+      
         with:
-          targetPlatform: WebGL 
-              
+          targetPlatform: WebGL
