@@ -774,7 +774,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -794,11 +800,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 71bf2b3e-7fc6-4003-81fe-b7424596068c
+  cloudProjectId: 40162360-b392-4ce3-9ce9-547a4caf7bab
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: DementiaTales
-  organizationId: kiranchy
+  organizationId: unity_1bf733bd8118cc9b5ed0
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
