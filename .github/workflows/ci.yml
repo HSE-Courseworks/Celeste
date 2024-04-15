@@ -62,8 +62,11 @@ jobs:
       - uses: game-ci/unity-test-runner@v4
         id: gameTestStep
         with:
-          artifactsPath: store_artifact.txt
-          coveragePath: coverage_artifact.txt
+          projectPath: ${{ matrix.projectPath }}
+          testMode: ${{ matrix.testMode }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: ${{ matrix.testMode }} Test Results
           coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
         
       - name: Build repository
