@@ -42,7 +42,7 @@ jobs:
       - name: Test runner
         uses: game-ci/unity-test-runner@v4
         with:
-          projectPath: ./Assets
+          path: ${{ github.workspace }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           packageMode: false
           unityVersion: 2022.3.17f1
