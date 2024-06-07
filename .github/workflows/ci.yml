@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - dev
+      - main
   pull_request: {}
 
 env:
@@ -63,17 +63,16 @@ jobs:
           checkName: ${{ matrix.testMode }} Test Results
           coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
 
-      - name: Store artifacts
-        uses: actions/upload-artifact@v3
-        if: always()
+      - name: Check code style
+        uses: hachque/run-stylecop-action@v1
         with:
-          path: ${{ steps.gameTestStep.outputs.artifactsPath }}
+          path: './Assets'
 
-      - name: Coverage results
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          path: ${{ steps.gameTestStep.outputs.coveragePath }}
+      - name: Build project
+        run: |
+          ./Unity/Editor/Unity -quit -batchmode -projectPath . -buildTarget StandaloneWindows64 -buildPath build
+          mkdir -p artifacts
+          mv build/*.exe artifacts/
         
       - name: Build repository
         uses: game-ci/unity-builder@v4
