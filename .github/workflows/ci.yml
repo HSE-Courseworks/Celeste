@@ -63,10 +63,11 @@ jobs:
           checkName: ${{ matrix.testMode }} Test Results
           coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
 
-      - name: Check code style
-        uses: hachque/run-stylecop-action@v1
-        with:
-          path: './Assets'
+      - name: Check code style with dotnet-format
+        run: |
+          dotnet tool restore
+          dotnet format --check --include "**/*.cs"
+        working-directory: ./Assets
 
       - name: Build project
         run: |
