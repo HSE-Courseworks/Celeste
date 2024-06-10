@@ -79,9 +79,10 @@ jobs:
         run: dotnet format ./Celeste.sln --verbosity diagnostic
 
       - name: Read user configuration
+        id: read-user-config
         run: |
           USER_CONFIG=$(cat user_config.json)
-          echo "::set-env name=USER_CONFIG::$USER_CONFIG"
+          echo "::set-output name=user-config::$USER_CONFIG"
       
       - name: Extract user data
         id: userdata
