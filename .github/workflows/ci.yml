@@ -118,7 +118,10 @@ jobs:
       - name: Push changes
         run: |
           git push
-
+          
+      - name: Clean up Docker
+        run: docker system prune -af
+      
       - name: Build project
         uses: game-ci/unity-builder@v4
         with:
