@@ -92,10 +92,21 @@ jobs:
           echo "::set-output name=username::$USER_NAME"
           echo "::set-output name=useremail::$USER_EMAIL"
       
-      - name: Commit and push changes
+      - name: Set user identity
+        run: |
+          git config --global user.email "${{ steps.email.outputs.email }}"
+          git config --global user.name "${{ steps.name.outputs.name }}"
+      
+      - name: Git add changes
         run: |
           git add .
-          git -c user.email="${{ steps.userdata.outputs.useremail }}" -c user.name="${{ steps.userdata.outputs.username }}" commit -m "Apply code formatting"
+      
+      - name: Commit changes
+        run: |
+          git commit -m "Apply code formatting"
+      
+      - name: Push changes
+        run: |
           git push
 
       - name: Build project
