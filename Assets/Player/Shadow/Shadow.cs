@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Shadow : MonoBehaviour
-{
+public class Shadow : MonoBehaviour {
     [SerializeField] private float fadingPower = 0.1f;
     [SerializeField] private float fadingSpeed = 1f;
     [SerializeField] private float fadingSlowerPower = 1f;
@@ -12,38 +11,32 @@ public class Shadow : MonoBehaviour
     [SerializeField] private float fadingSlowerBoard = 50f;
     private SpriteRenderer sprite;
 
-    void Awake()
-    {
+    void Awake() {
         sprite = GetComponent<SpriteRenderer>();
 
         StartCoroutine(Fade());
     }
 
-    public void Flip()
-    {
+    public void Flip() {
         sprite.flipX = true;
     }
 
-    IEnumerator Fade()
-    {
-        while (sprite.color.a > 0)
-        {
-            yield return new WaitForSeconds(fadingSpeed);  
+    IEnumerator Fade() {
+        while (sprite.color.a > 0) {
+            yield return new WaitForSeconds(fadingSpeed);
 
             Color newColor = sprite.color;
 
-            if (sprite.color.a > fadingSlowerBoard)
-            {
+            if (sprite.color.a > fadingSlowerBoard) {
                 newColor.a -= fadingPower;
             }
-            else
-            {
+            else {
                 newColor.a -= fadingSlowerPower;
             }
 
             sprite.color = newColor;
         }
 
-        Object.Destroy(gameObject); 
+        Object.Destroy(gameObject);
     }
 }

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fatigue : MonoBehaviour
-{
+public class Fatigue : MonoBehaviour {
     [Header("Fatigue")]
 
     public float fatigue = 0;
@@ -20,33 +19,27 @@ public class Fatigue : MonoBehaviour
 
     private RumbleManager rumble;
 
-    void Start()
-    {
-        sprite = GetComponent<SpriteRenderer>();      
+    void Start() {
+        sprite = GetComponent<SpriteRenderer>();
         playerColor = sprite.color;
         rumble = GetComponent<RumbleManager>();
     }
-    
-    public IEnumerator FlashPlayer()
-    {
+
+    public IEnumerator FlashPlayer() {
         isFlashing = true;
         rumble.startFatigueRumble();
 
         rumble.startFatigueRumble();
 
-        while(fatigue >= maxFatigue)
-        {
-            if (sprite.color == playerColor)
-            {
+        while (fatigue >= maxFatigue) {
+            if (sprite.color == playerColor) {
                 sprite.color = Color.red;
             }
-            else
-            {
+            else {
                 sprite.color = playerColor;
             }
 
-            if (rumble.isRumbling == false) 
-            {
+            if (rumble.isRumbling == false) {
                 rumble.startFatigueRumble();
             }
 
@@ -62,18 +55,15 @@ public class Fatigue : MonoBehaviour
         yield break;
     }
 
-    public void Tick()
-    {
+    public void Tick() {
         fatigue += fatigueTick * Time.deltaTime;
     }
 
-    public void JumpTick()
-    {
+    public void JumpTick() {
         fatigue += fatigueJumpTick;
     }
 
-    public void nullifyFatigue()
-    {
+    public void nullifyFatigue() {
         fatigue = 0f;
     }
 }

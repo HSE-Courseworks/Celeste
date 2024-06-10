@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 
-public class PlayerDash : MonoBehaviour
-{
+public class PlayerDash : MonoBehaviour {
     [HideInInspector]
     public bool isDashing = false;
 
@@ -32,8 +31,7 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private GameObject shadowGameObject;
     private GameObject shadow;
 
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
         jump = GetComponent<PlayerJump>();
         input = GetComponent<PlayerInput>();
@@ -42,16 +40,13 @@ public class PlayerDash : MonoBehaviour
         rumble = GetComponent<RumbleManager>();
     }
 
-    void Update()
-    {
+    void Update() {
         dashTimeUpdate();
         inputBufferTimeUpdate();
     }
 
-    public bool dashCanBeDone()
-    {
-        if (dashTimeCounter > 0f && inputBufferTimeCounter > 0f)
-        {
+    public bool dashCanBeDone() {
+        if (dashTimeCounter > 0f && inputBufferTimeCounter > 0f) {
             inputBufferTimeCounter = 0;
             dashTimeCounter = 0;
             return true;
@@ -60,35 +55,28 @@ public class PlayerDash : MonoBehaviour
         return false;
     }
 
-    private void inputBufferTimeUpdate()
-    {
-        if (input.horizontalInput != 0 || input.verticalInput != 0)
-        {
+    private void inputBufferTimeUpdate() {
+        if (input.horizontalInput != 0 || input.verticalInput != 0) {
             inputBufferTimeCounter = inputBufferTime;
 
             horizontalBuffer = input.horizontalInput;
             verticalBuffer = input.verticalInput;
         }
-        else
-        {
+        else {
             inputBufferTimeCounter -= Time.deltaTime;
         }
     }
 
-    private void dashTimeUpdate()
-    {
-        if (input.dashPressed)
-        {
+    private void dashTimeUpdate() {
+        if (input.dashPressed) {
             dashTimeCounter = dashTime;
         }
-        else
-        {
+        else {
             dashTimeCounter -= Time.deltaTime;
         }
     }
 
-    public void DashStart()
-    {
+    public void DashStart() {
         rumble.DashRumblePulse();
 
         StartCoroutine(DashManager());
@@ -96,8 +84,7 @@ public class PlayerDash : MonoBehaviour
         particles.spawnDashDust();
     }
 
-    IEnumerator DashManager()
-    {
+    IEnumerator DashManager() {
         isDashing = true;
         hasDashed = true;
 
@@ -106,8 +93,7 @@ public class PlayerDash : MonoBehaviour
         Dash();
 
         float timer = 0;
-        while (timer < dashLength)
-        {
+        while (timer < dashLength) {
             timer += 0.1f;
             spawnShadow();
 
@@ -116,32 +102,27 @@ public class PlayerDash : MonoBehaviour
 
         isDashing = false;
         jump.refreshGravity();
-        
+
         rb.velocity = Vector2.zero;
     }
 
-    private void spawnShadow()
-    {
-        shadow = Instantiate(shadowGameObject, transform.position,  Quaternion.identity);
+    private void spawnShadow() {
+        shadow = Instantiate(shadowGameObject, transform.position, Quaternion.identity);
         Shadow shadowScript = shadow.GetComponent<Shadow>();
 
-        if (player.getPlayerDirection() == Vector2.left)
-        {
+        if (player.getPlayerDirection() == Vector2.left) {
             shadowScript.Flip();
         }
 
     }
 
-    public void Dash() 
-    {
+    public void Dash() {
         FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
         rb.velocity = new Vector2(horizontalBuffer, verticalBuffer).normalized * dashPower;
     }
 
-    public void dashRefresh()
-    {
-        if (!isDashing)
-        {
+    public void dashRefresh() {
+        if (!isDashing) {
             hasDashed = false;
         }
     }

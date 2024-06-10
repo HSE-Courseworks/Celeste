@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJump : MonoBehaviour
-{
+public class PlayerJump : MonoBehaviour {
     [Header("Jump")]
     public float jumpBufferTime = 0.2f;
     public float jumpBufferCounter;
 
     public float coyoteTime = 0.2f;
     public float coyoteTimeCounter;
-    
+
     [SerializeField] private float jumpForce = 7;
     [SerializeField] private float pullUpJumpForce = 5;
     [SerializeField] public float jumpBorder = .3f;
@@ -24,61 +23,50 @@ public class PlayerJump : MonoBehaviour
 
     private SpriteRenderer sprite;
 
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
         indicators = GetComponent<Indicators>();
         input = GetComponent<PlayerInput>();
         sprite = GetComponent<SpriteRenderer>();
 
-        basicGravityScale = rb.gravityScale;  
+        basicGravityScale = rb.gravityScale;
     }
 
-    public void timeCoyotize()
-    {
-        if (indicators.onGround || indicators.onWall)
-        {
+    public void timeCoyotize() {
+        if (indicators.onGround || indicators.onWall) {
             coyoteTimeCounter = coyoteTime;
         }
-        else
-        {
+        else {
             coyoteTimeCounter -= Time.deltaTime;
         }
     }
 
-    public void jumpBufferize()
-    {
-        if (input.jumpPressed)
-        {
+    public void jumpBufferize() {
+        if (input.jumpPressed) {
             jumpBufferCounter = jumpBufferTime;
         }
-        else
-        {
+        else {
             jumpBufferCounter -= Time.deltaTime;
         }
     }
 
-    public void Jump()
-    {
+    public void Jump() {
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         jumpBufferCounter = 0f;
 
         sprite.size = new Vector2(1, 0.5f);
     }
 
-    public void pullUpJump()
-    {
+    public void pullUpJump() {
         //rb.velocity = new Vector2(rb.velocity.x, jumpForce / 1.4f);
         rb.velocity = new Vector2(rb.velocity.x, pullUpJumpForce);
     }
 
-    public void nullifyGravity()
-    {
+    public void nullifyGravity() {
         rb.gravityScale = 0;
     }
 
-    public void refreshGravity()
-    {
+    public void refreshGravity() {
         rb.gravityScale = basicGravityScale;
     }
 }

@@ -2,27 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dust : MonoBehaviour
-{
+public class Dust : MonoBehaviour {
     private Animator anim;
 
-    void Awake()
-    {
+    void Awake() {
         anim = GetComponent<Animator>();
     }
 
-    public void dustDisappear()
-    {
+    public void dustDisappear() {
         Object.Destroy(gameObject);
     }
 
-    public void playJumpingDustAnimation()
-    {
+    public void playJumpingDustAnimation() {
         anim.Play("jumpingDust");
     }
 
-    public void playLandingDustAnimation()
-    {
-        anim.Play("landingDust");     
+    public void playLandingDustAnimation() {
+        anim.Play("landingDust");
     }
 }

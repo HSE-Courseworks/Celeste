@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
     [Header("Movement")]
     [SerializeField] private float MoveSpeed = 5;
 
@@ -16,8 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     private SpriteRenderer sprite;
 
-    void Start()
-    {
+    void Start() {
         jump = GetComponent<PlayerJump>();
 
         input = GetComponent<PlayerInput>();
@@ -31,33 +29,26 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Move()
-    {
+    public void Move() {
         rb.velocity = new Vector2(input.horizontalInput * MoveSpeed, rb.velocity.y);
     }
 
-    private void PullUp()
-    {
-        if (indicators.tossAsideTimer > 0)
-        {
+    private void PullUp() {
+        if (indicators.tossAsideTimer > 0) {
             indicators.tossAsideTimer -= Time.deltaTime;
         }
-        else
-        {
+        else {
             indicators.pullUp = false;
 
             rb.velocity = 20 * player.getPlayerDirection() + Vector2.up;
         }
     }
 
-    public void Flip()
-    {
-        if (input.horizontalInput < 0)
-        {
+    public void Flip() {
+        if (input.horizontalInput < 0) {
             sprite.flipX = true;
         }
-        else if (input.horizontalInput > 0)
-        {
+        else if (input.horizontalInput > 0) {
             sprite.flipX = false;
         }
     }
