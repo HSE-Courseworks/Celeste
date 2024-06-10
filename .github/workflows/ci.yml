@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - new-dev
   pull_request: 
     branches:
       - main
+      - new-dev
 
 env:
     UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -76,15 +78,33 @@ jobs:
       - name: Check code
         run: dotnet format ./Celeste.sln --verbosity diagnostic
 
-      - name: Create build directory
-        run: mkdir ./Build
-        
+      - name: Read user configuration
+        run: |
+          USER_CONFIG=$(cat user_config.json)
+          echo "::set-env name=USER_CONFIG::$USER_CONFIG"
+      
+      - name: Extract user data
+        id: userdata
+        run: |
+          USER_NAME=$(echo "$USER_CONFIG" | jq -r ".users[] | select(.name == \"$GITHUB_ACTOR\") | .name")
+          USER_EMAIL=$(echo "$USER_CONFIG" | jq -r ".users[] | select(.name == \"$GITHUB_ACTOR\") | .email")
+          echo "::set-output name=username::$USER_NAME"
+          echo "::set-output name=useremail::$USER_EMAIL"
+      
+      - name: Commit and push changes
+        run: |
+          git add .
+          git -c user.email="${{ steps.userdata.outputs.useremail }}" -c user.name="${{ steps.userdata.outputs.username }}" commit -m "Apply code formatting"
+          git push
+
       - name: Build project
         uses: game-ci/unity-builder@v4
         with:
-          targetPlatform: StandaloneWindows64 
-
+          path: ${{ matrix.projectPath }}
+          targetPlatform: WebGL
+          
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          path: ./Build
+          name: Build
+          path: build
