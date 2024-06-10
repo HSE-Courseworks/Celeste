@@ -78,6 +78,9 @@ jobs:
       - name: Check code
         run: dotnet format ./Celeste.sln --verbosity diagnostic
 
+      - name: Debug user configuration
+        run: cat user_config.json
+        
       - name: Read user configuration
         id: read-user-config
         run: |
@@ -95,7 +98,12 @@ jobs:
       - name: Git add changes
         run: |
           git add .
-      
+
+      - name: Debug extracted user data
+        run: |
+          echo "Extracted username: $USER_NAME"
+          echo "Extracted email: $USER_EMAIL"
+          
       - name: Commit changes
         run: |
           git config --global user.email "${{ steps.userdata.outputs.useremail }}"
