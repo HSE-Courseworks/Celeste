@@ -91,18 +91,15 @@ jobs:
           USER_EMAIL=$(echo "$USER_CONFIG" | jq -r ".users[] | select(.name == \"$GITHUB_ACTOR\") | .email")
           echo "::set-output name=username::$USER_NAME"
           echo "::set-output name=useremail::$USER_EMAIL"
-      
-      - name: Set user identity
-        run: |
-          git config --global user.email "${{ steps.email.outputs.email }}"
-          git config --global user.name "${{ steps.name.outputs.name }}"
-      
+    
       - name: Git add changes
         run: |
           git add .
       
       - name: Commit changes
         run: |
+          git config --global user.email "${{ steps.email.outputs.email }}"
+          git config --global user.name "${{ steps.name.outputs.name }}"
           git commit -m "Apply code formatting"
       
       - name: Push changes
