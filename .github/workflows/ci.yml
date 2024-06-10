@@ -87,9 +87,6 @@ jobs:
           USER_CONFIG=$(cat user_config.json)
           echo "::set-output name=user-config::$USER_CONFIG"
 
-      - name: Print GITHUB_ACTOR
-        run: echo "${GITHUB_ACTOR}"
-
       - name: Extract user data
         id: userdata
         run: |
@@ -117,8 +114,8 @@ jobs:
       
       - name: Push changes
         run: |
-          git push
-          
+          git push || echo "Changes already pushed, skipping"
+
       - name: Clean up Docker
         run: docker system prune -af
       
