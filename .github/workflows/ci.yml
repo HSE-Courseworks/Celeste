@@ -27,7 +27,6 @@ jobs:
         testMode:
           - playmode
           - editmode
-          - standalone
 
     steps:
       - name: Checkout repository
@@ -46,14 +45,7 @@ jobs:
           key: ${{ runner.os }}-unity-${{ hashFiles('**/ProjectSettings/ProjectVersion.txt') }}
           
       - name: Test runner
-        uses: game-ci/unity-test-runner@v4
-        with:
-          path: ${{ github.workspace }}
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          packageMode: false
-          unityVersion: 2022.3.17f1
-
-      - uses: game-ci/unity-test-runner@v4
+	uses: game-ci/unity-test-runner@v4
         id: gameTestStep
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
