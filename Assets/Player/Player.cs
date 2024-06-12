@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -54,7 +50,7 @@ public class Player : MonoBehaviour {
 
         //Debug
         debugState();
-        stateText.text = "State: " + textState;
+        // stateText.text = "State: " + textState;
 
         //Debug.Log(jump.coyoteTimeCounter + " " + jump.jumpBufferCounter);
 

@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class RippleEffect : MonoBehaviour {
     public AnimationCurve waveform = new AnimationCurve(
@@ -105,7 +105,9 @@ public class RippleEffect : MonoBehaviour {
             }
         }
 
-        foreach (var d in droplets) d.Update();
+        foreach (var d in droplets) {
+            d.Update();
+        }
 
         UpdateShaderParameters();
     }

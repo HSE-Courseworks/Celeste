@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Diagnostics;
+using UnityEngine;
 
 public class DebugMode : MonoBehaviour {
     static bool debugMode = false;
