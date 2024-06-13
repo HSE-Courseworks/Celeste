@@ -83,16 +83,16 @@ public class DebugMode : MonoBehaviour {
 
     void DebugModeActivated() {
         PrintOnScreen(0, 0, "Debug information");
-        PrintOnScreen(0, 10, "Player Position: " +
+        PrintOnScreen(0, 20, "Player Position: " +
             player.transform.position.ToString());
-        PrintOnScreen(0, 20, "Player State: " +
+        PrintOnScreen(0, 40, "Player State: " +
             playerStateComponent.state.ToString());
-        PrintOnScreen(0, 30, "Player Fatigue: " +
+        PrintOnScreen(0, 60, "Player Fatigue: " +
             fatigueComponent.fatigue.ToString());
-        PrintOnScreen(0, 40, "Deaths: " + deathCount.ToString());
-        PrintOnScreen(0, 50, "Timer: " + timer.Elapsed.Seconds.ToString());
-        PrintOnScreen(0, 60, "Minutes spent: " + minutes.ToString());
-        PrintOnScreen(0, 70, "Current checkpoint: " + checkpointComponent.index.ToString());
+        PrintOnScreen(0, 80, "Deaths: " + deathCount.ToString());
+        PrintOnScreen(0, 100, "Timer: " + timer.Elapsed.Seconds.ToString());
+        PrintOnScreen(0, 120, "Minutes spent: " + minutes.ToString());
+        PrintOnScreen(0, 130, "Current checkpoint: " + checkpointComponent.index.ToString());
     }
 
     void PrintOnScreen(int x, int y, string str) {

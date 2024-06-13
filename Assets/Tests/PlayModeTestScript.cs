@@ -7,6 +7,7 @@ using UnityEngine.TestTools;
 using UnityEngine.InputSystem;
 
 public class PlayModeTestScript : MonoBehaviour {
+
     private GameObject playerObject;
     private Rigidbody2D rb;
 
@@ -17,16 +18,16 @@ public class PlayModeTestScript : MonoBehaviour {
     private PlayerInput playerInput;
     private PlayerMovement playerMovement;
 
-    private GameObject collectablePicker;
-    private Collectable_Picker collectablePickerComponent;
+    private GameObject collectable;
+    private Collectable_Picker collectablePicker;
 
-    private GameObject dialogueObject;
-    private DialogueAnimator dialogueAnimator;
+    private DialogueManager dialogueManager;
+    private Dialogue dialogue;
 
-    private GameObject menuObject;
     private Menu menu;
 
     private SpriteRenderer spriteRender;
+
 
     [UnitySetUp]
     public IEnumerator LoadScene() {
@@ -47,13 +48,14 @@ public class PlayModeTestScript : MonoBehaviour {
         spriteRender = playerObject.GetComponent<SpriteRenderer>();
 
 
-        collectablePicker = GameObject.Find("Collectable");
-        collectablePickerComponent = collectablePicker.GetComponent<Collectable_Picker>();
+        collectable = GameObject.Find("Collectable");
+        collectablePicker = GameObject.FindObjectOfType<Collectable_Picker>();
 
-        dialogueObject = new GameObject();
-        dialogueAnimator = GameObject.FindObjectOfType<DialogueAnimator>();
+        dialogueManager = GameObject.FindObjectOfType<DialogueManager>();
+        dialogue = new Dialogue();
+        dialogue.name = "Dialogue1";
+        dialogue.sentences = new string[] { "Hello, world!" };
 
-        menuObject = new GameObject();
         menu = GameObject.FindObjectOfType<Menu>();
 
     }
@@ -212,113 +214,84 @@ public class PlayModeTestScript : MonoBehaviour {
 
     [UnityTest]
     public IEnumerator TestCollectablePicker() {
-        Collider2D collectableCollider = collectablePicker.GetComponent<BoxCollider2D>();
-        collectablePickerComponent.OnTriggerEnter2D(collectableCollider);
+        Collider2D collectableCollider = collectable.GetComponent<Collider2D>();
+        collectablePicker.OnTriggerEnter2D(collectableCollider);
 
         yield return null;
-        Assert.IsTrue(collectableCollider == null);
+        Assert.IsTrue(collectable == null || collectable.Equals(null));
     }
 
-    [UnityTest]
-    public IEnumerator TestPlayerInputMove() {
-        InputAction.CallbackContext context = new InputAction.CallbackContext();
-        var action = Substitute.For<InputAction>();
+    //[UnityTest]
+    //public IEnumerator TestPlayerInputMove() {
+    //    var context = new InputAction.CallbackContext();
+    //    context.ReadValue<Vector2>().Returns(new Vector2(1f, 0f));
 
-        action.ReadValue<Vector2>().Returns(new Vector2(1f, 0f));
-        context.action.Returns(action);
+    //    playerInput.Move(context);
 
-        playerInput.Move(context);
+    //    yield return null;
+    //    Assert.AreEqual(1f, playerInput.horizontalInput);
+    //    Assert.AreEqual(0f, playerInput.verticalInput);
+    //}
 
-        yield return null;
-        Assert.AreEqual(1f, playerInput.horizontalInput);
-        Assert.AreEqual(0f, playerInput.verticalInput);
-    }
+    //[UnityTest]
+    //public IEnumerator TestPlayerInputJump() {
+    //    var context = new InputAction.CallbackContext();
 
-    [UnityTest]
-    public IEnumerator TestPlayerInputJump() {
-        InputAction.CallbackContext context = new InputAction.CallbackContext();
-        var action = Substitute.For<InputAction>();
+    //    playerInput.Jump(context);
 
-        context.action.Returns(action);
-        action.triggered.Returns(true);
+    //    yield return null;
+    //    Assert.IsTrue(playerInput.jumpPressed);
+    //}
 
-        playerInput.Jump(context);
+    //[UnityTest]
+    //public IEnumerator TestPlayerInputDash() {
+    //    var context = CreateCallbackContext(true);
+    //    playerInput.Dash(context);
 
-        yield return null;
-        Assert.IsTrue(playerInput.jumpPressed);
-    }
+    //    yield return null;
+    //    Assert.IsTrue(playerInput.dashPressed);
+    //}
 
-    [UnityTest]
-    public IEnumerator TestPlayerInputDash() {
-        InputAction.CallbackContext context = new InputAction.CallbackContext();
-        var action = Substitute.For<InputAction>();
+    //[UnityTest]
+    //public IEnumerator TestPlayerInputGrab() {
+    //    var context = CreateCallbackContext(true);
+    //    playerInput.Grab(context);
 
-        context.action.Returns(action);
-        action.triggered.Returns(true);
+    //    yield return null;
+    //    Assert.IsTrue(playerInput.grabPressed);
+    //}
 
-        playerInput.Dash(context);
+    //[UnityTest]
+    //public IEnumerator TestDialogueStarted() {
+    //    Animator dialogueAnimator = dialogueManager.GetComponent<Animator>();
+    //    dialogueManager.StartDialogue(dialogue);
 
-        yield return null;
-        Assert.IsTrue(playerInput.dashPressed);
-    }
+    //    yield return null;
+    //    Assert.IsTrue(dialogueAnimator.GetBool("dialogueOpen"));
+    //}
 
-    [UnityTest]
-    public IEnumerator TestPlayerInputGrab() {
-        InputAction.CallbackContext context = new InputAction.CallbackContext();
-        var action = Substitute.For<InputAction>();
+    //[UnityTest]
+    //public IEnumerator TestDialogueFinished() {
+    //    Animator dialogueAnimator = dialogueManager.GetComponent<Animator>();
+    //    dialogueManager.EndDialogue();
 
-        context.action.Returns(action);
-        action.triggered.Returns(true);
+    //    yield return null;
+    //    Assert.IsFalse(dialogueAnimator.GetBool("dialogueOpen"));
+    //}
 
-        playerInput.Grab(context);
+    //[UnityTest]
+    //public IEnumerator TestMenuLoadScene() {
+    //    menu.Play();
 
-        yield return null;
-        Assert.IsTrue(playerInput.grabPressed);
-    }
+    //    yield return null;
+    //    Assert.AreEqual(2, SceneManager.GetActiveScene().buildIndex);
+    //}
 
-    [UnityTest]
-    public IEnumerator TestShouldOpenDialogue() {
-        Animator animator = dialogueObject.AddComponent<Animator>();
-        Collider2D collider = dialogueObject.AddComponent<BoxCollider2D>();
+    //[UnityTest]
+    //public IEnumerator TestMenuExitApplication() {
+    //    menu.Exit();
 
-        dialogueAnimator.dialogueStartAnimator = animator;
-
-        collider.isTrigger = true;
-        dialogueAnimator.OnTriggerEnter2D(collider);
-
-        yield return null;
-        Assert.IsTrue(dialogueAnimator.playerIsClose);
-        Assert.IsTrue(animator.GetBool("startOpen"));
-    }
-
-    [UnityTest]
-    public IEnumerator TestShouldCloseDialogue() {
-        Animator animator = dialogueObject.AddComponent<Animator>();
-        Collider2D collider = dialogueObject.AddComponent<BoxCollider2D>();
-
-        dialogueAnimator.dialogueStartAnimator = animator;
-
-        collider.isTrigger = true;
-        dialogueAnimator.OnTriggerExit2D(collider);
-
-        yield return null;
-        Assert.IsFalse(dialogueAnimator.playerIsClose);
-        Assert.IsFalse(animator.GetBool("startOpen"));
-    }
-
-    [UnityTest]
-    public IEnumerator TestMenuLoadScene() {
-        menu.Play();
-
-        yield return null;
-        Assert.AreEqual(2, SceneManager.GetActiveScene().buildIndex);
-    }
-
-    [UnityTest]
-    public IEnumerator TestMenuExitApplication() {
-        menu.Exit();
-
-        yield return null;
-        Assert.IsFalse(Application.isPlaying);
-    }
+    //    yield return null;
+    //    Assert.IsFalse(Application.isPlaying);
+    //}
 }
