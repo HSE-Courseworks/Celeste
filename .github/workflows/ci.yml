@@ -65,7 +65,7 @@ jobs:
           dotnet-version: '6.0.102'
 
       - name: Install dotnet-format tool
-        run: dotnet tool install --global -p Assembly-CSharp.csproj dotnet-format
+        run: dotnet tool install -g dotnet-format -p Assembly-CSharp.csproj
 
       - name: Check code
         run: dotnet format ./Celeste.sln --verbosity diagnostic
