@@ -83,7 +83,7 @@ jobs:
       - name: Extract user data
         id: userdata
         run: |
-          USER_CONFIG=$(cat user_config.json)
+          USER_CONFIG=$(cat .github/workflows/user_config.json)
           GITHUB_ACTOR=$(echo "$GITHUB_ACTOR")
           USER_NAME=$(echo "$USER_CONFIG" | jq -r ".users[] | select(.name == \"$GITHUB_ACTOR\") | .name")
           USER_EMAIL=$(echo "$USER_CONFIG" | jq -r ".users[] | select(.name == \"$GITHUB_ACTOR\") | .email")
