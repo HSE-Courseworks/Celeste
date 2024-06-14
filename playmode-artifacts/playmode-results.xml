@@ -1,6 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<test-run id="2" testcasecount="0" result="Passed" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2024-06-10 08:43:43Z" end-time="2024-06-10 08:43:43Z" duration="0.0028076">
-  <test-suite type="TestSuite" id="1000" name="DementiaTales" fullname="DementiaTales" runstate="Runnable" testcasecount="0" result="Passed" start-time="2024-06-10 08:43:43Z" end-time="2024-06-10 08:43:43Z" duration="0.002808" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0">
+<test-run id="2" testcasecount="13" result="Passed" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2024-06-14 19:36:56Z" end-time="2024-06-14 19:37:25Z" duration="29.018535">
+  <test-suite type="TestSuite" id="1000" name="DementiaTales" fullname="DementiaTales" runstate="Runnable" testcasecount="13" result="Passed" start-time="2024-06-14 19:36:56Z" end-time="2024-06-14 19:37:25Z" duration="29.018535" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
     <properties />
+    <test-suite type="Assembly" id="1015" name="Tests.dll" fullname="/github/workspace/Library/ScriptAssemblies/Tests.dll" runstate="Runnable" testcasecount="13" result="Passed" start-time="2024-06-14 19:36:56Z" end-time="2024-06-14 19:37:25Z" duration="29.005154" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="1285" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="PlayModeTestScript" fullname="PlayModeTestScript" classname="PlayModeTestScript" runstate="Runnable" testcasecount="13" result="Passed" start-time="2024-06-14 19:36:56Z" end-time="2024-06-14 19:37:25Z" duration="29.002509" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <output><![CDATA[You are trying to create a MonoBehaviour using the 'new' keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent(). Alternatively, your script can inherit from ScriptableObject or no base class at all
+]]></output>
+        <test-case id="1014" name="TestCollectablePicker" fullname="PlayModeTestScript.TestCollectablePicker" methodname="TestCollectablePicker" classname="PlayModeTestScript" runstate="Runnable" seed="1065833686" result="Passed" start-time="2024-06-14 19:36:56Z" end-time="2024-06-14 19:36:58Z" duration="2.482175" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1013" name="TestPlayerClimbDown" fullname="PlayModeTestScript.TestPlayerClimbDown" methodname="TestPlayerClimbDown" classname="PlayModeTestScript" runstate="Runnable" seed="350440668" result="Passed" start-time="2024-06-14 19:36:58Z" end-time="2024-06-14 19:37:01Z" duration="2.146450" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1011" name="TestPlayerClimbSlip" fullname="PlayModeTestScript.TestPlayerClimbSlip" methodname="TestPlayerClimbSlip" classname="PlayModeTestScript" runstate="Runnable" seed="1068170308" result="Passed" start-time="2024-06-14 19:37:01Z" end-time="2024-06-14 19:37:03Z" duration="2.155340" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1012" name="TestPlayerClimbUp" fullname="PlayModeTestScript.TestPlayerClimbUp" methodname="TestPlayerClimbUp" classname="PlayModeTestScript" runstate="Runnable" seed="1251203798" result="Passed" start-time="2024-06-14 19:37:03Z" end-time="2024-06-14 19:37:05Z" duration="2.174890" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1007" name="TestPlayerDash" fullname="PlayModeTestScript.TestPlayerDash" methodname="TestPlayerDash" classname="PlayModeTestScript" runstate="Runnable" seed="1171522144" result="Passed" start-time="2024-06-14 19:37:05Z" end-time="2024-06-14 19:37:07Z" duration="2.155490" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1009" name="TestPlayerFatigueJumpTick" fullname="PlayModeTestScript.TestPlayerFatigueJumpTick" methodname="TestPlayerFatigueJumpTick" classname="PlayModeTestScript" runstate="Runnable" seed="460944188" result="Passed" start-time="2024-06-14 19:37:07Z" end-time="2024-06-14 19:37:09Z" duration="2.148052" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1010" name="TestPlayerFatigueNullify" fullname="PlayModeTestScript.TestPlayerFatigueNullify" methodname="TestPlayerFatigueNullify" classname="PlayModeTestScript" runstate="Runnable" seed="599319577" result="Passed" start-time="2024-06-14 19:37:09Z" end-time="2024-06-14 19:37:11Z" duration="2.167899" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1008" name="TestPlayerFatigueTick" fullname="PlayModeTestScript.TestPlayerFatigueTick" methodname="TestPlayerFatigueTick" classname="PlayModeTestScript" runstate="Runnable" seed="99136987" result="Passed" start-time="2024-06-14 19:37:11Z" end-time="2024-06-14 19:37:14Z" duration="2.184496" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1003" name="TestPlayerFlip" fullname="PlayModeTestScript.TestPlayerFlip" methodname="TestPlayerFlip" classname="PlayModeTestScript" runstate="Runnable" seed="1562506180" result="Passed" start-time="2024-06-14 19:37:14Z" end-time="2024-06-14 19:37:16Z" duration="2.217776" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1004" name="TestPlayerJumpAppliesForce" fullname="PlayModeTestScript.TestPlayerJumpAppliesForce" methodname="TestPlayerJumpAppliesForce" classname="PlayModeTestScript" runstate="Runnable" seed="1619520571" result="Passed" start-time="2024-06-14 19:37:16Z" end-time="2024-06-14 19:37:18Z" duration="2.220531" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1005" name="TestPlayerJumpCanPullUp" fullname="PlayModeTestScript.TestPlayerJumpCanPullUp" methodname="TestPlayerJumpCanPullUp" classname="PlayModeTestScript" runstate="Runnable" seed="1362579680" result="Passed" start-time="2024-06-14 19:37:18Z" end-time="2024-06-14 19:37:20Z" duration="2.179414" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1006" name="TestPlayerJumpNullifyGravity" fullname="PlayModeTestScript.TestPlayerJumpNullifyGravity" methodname="TestPlayerJumpNullifyGravity" classname="PlayModeTestScript" runstate="Runnable" seed="1545856954" result="Passed" start-time="2024-06-14 19:37:20Z" end-time="2024-06-14 19:37:22Z" duration="2.299244" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+        <test-case id="1002" name="TestPlayerMove" fullname="PlayModeTestScript.TestPlayerMove" methodname="TestPlayerMove" classname="PlayModeTestScript" runstate="Runnable" seed="1503855876" result="Passed" start-time="2024-06-14 19:37:22Z" end-time="2024-06-14 19:37:25Z" duration="2.423574" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object '') is missing!
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
   </test-suite>
 </test-run>
