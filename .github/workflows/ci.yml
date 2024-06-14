@@ -110,7 +110,7 @@ jobs:
       - name: Build project
         uses: game-ci/unity-builder@v4
         with:
-          path: "./Assets/Scenes/Level 1.unity"
+          path: ./Assets/Scenes/Level1.unity
           targetPlatform: StandaloneWindows64
           
       - name: Upload artifact
