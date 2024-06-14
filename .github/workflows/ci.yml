@@ -66,9 +66,10 @@ jobs:
 
       - name: Install dotnet-format tool
         run: dotnet tool install -g dotnet-format
+        working-directory: ./MainProj
 
       - name: Check code
-        run: dotnet format Assembly-CSharp.csproj --verbosity diagnostic
+        run: dotnet format Celeste.sln --verbosity diagnostic
 
       - name: Read user configuration
         id: read-user-config
