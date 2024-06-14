@@ -74,7 +74,7 @@ jobs:
       - name: Read user configuration
         id: read-user-config
         run: |
-          USER_CONFIG=$(cat user_config.json)
+          USER_CONFIG=$(cat .github/workflows/user_config.json)
           echo "::set-output name=user-config::$USER_CONFIG"
 
       - name: Extract user data
