@@ -71,6 +71,9 @@ jobs:
       - name: Check code
         run: dotnet format ./MainProj/Assembly-CSharp.csproj --verbosity diagnostic
 
+      - name: Check code in tests
+        run: dotnet format Tests.csproj --verbosity diagnostic
+
       - name: Read user configuration
         id: read-user-config
         run: |
