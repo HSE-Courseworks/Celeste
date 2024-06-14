@@ -69,7 +69,7 @@ jobs:
         working-directory: ./MainProj
 
       - name: Check code
-        run: dotnet format ./MainProj/Celeste.sln --verbosity diagnostic
+        run: dotnet format ./MainProj/Assembly-CSharp.csproj --verbosity diagnostic
 
       - name: Read user configuration
         id: read-user-config
