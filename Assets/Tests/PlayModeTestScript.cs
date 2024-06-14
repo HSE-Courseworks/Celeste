@@ -60,12 +60,6 @@ public class PlayModeTestScript : MonoBehaviour {
 
     }
 
-    [UnityTest, Ignore("This is just an example")]
-    public IEnumerator AssertExample() {
-        yield return null;
-        Assert.Equals(2 + 2, 4);
-    }
-
     [UnityTest]
     public IEnumerator TestPlayerMove() {
         var initialVelocity = rb.velocity;
@@ -220,47 +214,7 @@ public class PlayModeTestScript : MonoBehaviour {
         yield return null;
         Assert.IsTrue(collectable == null || collectable.Equals(null));
     }
-
-    //[UnityTest]
-    //public IEnumerator TestPlayerInputMove() {
-    //    var context = new InputAction.CallbackContext();
-    //    context.ReadValue<Vector2>().Returns(new Vector2(1f, 0f));
-
-    //    playerInput.Move(context);
-
-    //    yield return null;
-    //    Assert.AreEqual(1f, playerInput.horizontalInput);
-    //    Assert.AreEqual(0f, playerInput.verticalInput);
-    //}
-
-    //[UnityTest]
-    //public IEnumerator TestPlayerInputJump() {
-    //    var context = new InputAction.CallbackContext();
-
-    //    playerInput.Jump(context);
-
-    //    yield return null;
-    //    Assert.IsTrue(playerInput.jumpPressed);
-    //}
-
-    //[UnityTest]
-    //public IEnumerator TestPlayerInputDash() {
-    //    var context = CreateCallbackContext(true);
-    //    playerInput.Dash(context);
-
-    //    yield return null;
-    //    Assert.IsTrue(playerInput.dashPressed);
-    //}
-
-    //[UnityTest]
-    //public IEnumerator TestPlayerInputGrab() {
-    //    var context = CreateCallbackContext(true);
-    //    playerInput.Grab(context);
-
-    //    yield return null;
-    //    Assert.IsTrue(playerInput.grabPressed);
-    //}
-
+  
     //[UnityTest]
     //public IEnumerator TestDialogueStarted() {
     //    Animator dialogueAnimator = dialogueManager.GetComponent<Animator>();
