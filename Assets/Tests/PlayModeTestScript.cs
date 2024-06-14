@@ -31,7 +31,7 @@ public class PlayModeTestScript : MonoBehaviour {
 
     [UnitySetUp]
     public IEnumerator LoadScene() {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Level1");
         yield return new WaitForSeconds(1f);
 
         playerObject = GameObject.FindGameObjectWithTag("Player");
