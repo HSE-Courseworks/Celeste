@@ -65,10 +65,10 @@ jobs:
           dotnet-version: '6.0.102'
 
       - name: Install dotnet-format tool
-        run: dotnet tool install -g dotnet-format -p Assembly-CSharp.csproj
+        run: dotnet tool install -g dotnet-format
 
       - name: Check code
-        run: dotnet format ./Celeste.sln --verbosity diagnostic
+        run: dotnet format Assembly-CSharp.csproj --verbosity diagnostic
 
       - name: Read user configuration
         id: read-user-config
