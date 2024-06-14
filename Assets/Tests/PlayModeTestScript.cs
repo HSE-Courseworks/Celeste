@@ -67,8 +67,8 @@ public class PlayModeTestScript : MonoBehaviour {
 
         initialVelocity = new Vector2(playerInput.horizontalInput * 10, initialVelocity.y);
 
-        yield return null;
         Assert.AreEqual(initialVelocity.x, rb.velocity.x);
+        yield return null;
     }
 
     [UnityTest]
@@ -77,24 +77,23 @@ public class PlayModeTestScript : MonoBehaviour {
 
         playerMovement.Flip();
 
-        yield return null;
         Assert.IsTrue(spriteRender.flipX);
 
         playerInput.horizontalInput = 1f;
 
         playerMovement.Flip();
-
-        yield return null;
+        
         Assert.IsFalse(spriteRender.flipX);
+        yield return null;
     }
 
     [UnityTest]
     public IEnumerator TestPlayerJumpAppliesForce() {
         float initialVelocity = rb.velocity.y;
         playerJump.Jump();
-
-        yield return null;
+        
         Assert.IsTrue(rb.velocity.y > initialVelocity);
+        yield return null;
     }
 
     [UnityTest]
@@ -103,16 +102,16 @@ public class PlayModeTestScript : MonoBehaviour {
         playerJump.pullUpJump();
         initialVelocity = new Vector2(initialVelocity.x, 5);
 
-        yield return null;
         Assert.AreEqual(initialVelocity.y, rb.velocity.y, 1);
+        yield return null;
     }
 
     [UnityTest]
     public IEnumerator TestPlayerJumpNullifyGravity() {
         playerJump.nullifyGravity();
-
-        yield return null;
+        
         Assert.AreEqual(0, rb.gravityScale);
+        yield return null;
     }
 
     [UnityTest]
@@ -129,13 +128,13 @@ public class PlayModeTestScript : MonoBehaviour {
         dashPowerField.SetValue(playerDash, 20f);
 
         playerDash.Dash();
-
-        yield return null;
+        
         Vector2 expectedVelocity = new Vector2(playerInput.horizontalInput, playerInput.verticalInput).normalized * 20f;
         Vector2 actualVelocity = rb.velocity;
 
         Assert.AreEqual(expectedVelocity.x, actualVelocity.x, 0.01f);
         Assert.AreEqual(expectedVelocity.y, actualVelocity.y, 0.01f);
+        yield return null;
     }
 
     [UnityTest]
@@ -146,9 +145,9 @@ public class PlayModeTestScript : MonoBehaviour {
         playerFatigue.Tick();
 
         float expectedFatigue = initialFatigue + playerFatigue.fatigueTick * Time.deltaTime;
-
-        yield return null;
+        
         Assert.AreEqual(expectedFatigue, playerFatigue.fatigue, 0.01f);
+        yield return null;
     }
 
     [UnityTest]
@@ -157,31 +156,29 @@ public class PlayModeTestScript : MonoBehaviour {
         playerFatigue.JumpTick();
 
         float expectedFatigue = initialFatigue + playerFatigue.fatigueJumpTick;
-
-        yield return null;
+        
         Assert.AreEqual(expectedFatigue, playerFatigue.fatigue, 0.01f);
+        yield return null;
     }
 
     [UnityTest]
     public IEnumerator TestPlayerFatigueNullify() {
         playerFatigue.fatigue = 5f;
         playerFatigue.nullifyFatigue();
-
-        yield return null;
+        
         Assert.AreEqual(0f, playerFatigue.fatigue, 0.01f);
+        yield return null;
     }
 
     [UnityTest]
     public IEnumerator TestPlayerClimbSlip() {
-        yield return null;
-
         var initialVelocity = rb.velocity;
         float climbSlip = -13f;
         initialVelocity = new Vector2(initialVelocity.x, climbSlip);
         playerClimb.Slip();
-
-        yield return null;
+        
         Assert.AreEqual(initialVelocity.y, rb.velocity.y, 1f);
+        yield return null;
     }
 
     [UnityTest]
@@ -190,9 +187,9 @@ public class PlayModeTestScript : MonoBehaviour {
         float climbUpSpeed = 5f;
         initialVelocity = new Vector2(initialVelocity.x, climbUpSpeed);
         playerClimb.ClimbUp();
-
-        yield return null;
+        
         Assert.AreEqual(initialVelocity.y, rb.velocity.y, 1f);
+        yield return null;
     }
 
     [UnityTest]
@@ -201,9 +198,9 @@ public class PlayModeTestScript : MonoBehaviour {
         float climbDownSpeed = -9f;
         initialVelocity = new Vector2(initialVelocity.x, climbDownSpeed);
         playerClimb.ClimbDown();
-
-        yield return null;
+        
         Assert.AreEqual(initialVelocity.y, rb.velocity.y, 1f);
+        yield return null;
     }
 
     [UnityTest]
@@ -214,6 +211,7 @@ public class PlayModeTestScript : MonoBehaviour {
         yield return null;
         Assert.IsTrue(collectable == null || collectable.Equals(null));
     }
+
   
     //[UnityTest]
     //public IEnumerator TestDialogueStarted() {
