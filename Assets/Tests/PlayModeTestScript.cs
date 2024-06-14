@@ -82,7 +82,7 @@ public class PlayModeTestScript : MonoBehaviour {
         playerInput.horizontalInput = 1f;
 
         playerMovement.Flip();
-        
+
         Assert.IsFalse(spriteRender.flipX);
         yield return null;
     }
@@ -91,7 +91,7 @@ public class PlayModeTestScript : MonoBehaviour {
     public IEnumerator TestPlayerJumpAppliesForce() {
         float initialVelocity = rb.velocity.y;
         playerJump.Jump();
-        
+
         Assert.IsTrue(rb.velocity.y > initialVelocity);
         yield return null;
     }
@@ -109,7 +109,7 @@ public class PlayModeTestScript : MonoBehaviour {
     [UnityTest]
     public IEnumerator TestPlayerJumpNullifyGravity() {
         playerJump.nullifyGravity();
-        
+
         Assert.AreEqual(0, rb.gravityScale);
         yield return null;
     }
@@ -128,7 +128,7 @@ public class PlayModeTestScript : MonoBehaviour {
         dashPowerField.SetValue(playerDash, 20f);
 
         playerDash.Dash();
-        
+
         Vector2 expectedVelocity = new Vector2(playerInput.horizontalInput, playerInput.verticalInput).normalized * 20f;
         Vector2 actualVelocity = rb.velocity;
 
@@ -145,7 +145,7 @@ public class PlayModeTestScript : MonoBehaviour {
         playerFatigue.Tick();
 
         float expectedFatigue = initialFatigue + playerFatigue.fatigueTick * Time.deltaTime;
-        
+
         Assert.AreEqual(expectedFatigue, playerFatigue.fatigue, 0.01f);
         yield return null;
     }
@@ -156,7 +156,7 @@ public class PlayModeTestScript : MonoBehaviour {
         playerFatigue.JumpTick();
 
         float expectedFatigue = initialFatigue + playerFatigue.fatigueJumpTick;
-        
+
         Assert.AreEqual(expectedFatigue, playerFatigue.fatigue, 0.01f);
         yield return null;
     }
@@ -165,7 +165,7 @@ public class PlayModeTestScript : MonoBehaviour {
     public IEnumerator TestPlayerFatigueNullify() {
         playerFatigue.fatigue = 5f;
         playerFatigue.nullifyFatigue();
-        
+
         Assert.AreEqual(0f, playerFatigue.fatigue, 0.01f);
         yield return null;
     }
@@ -176,7 +176,7 @@ public class PlayModeTestScript : MonoBehaviour {
         float climbSlip = -13f;
         initialVelocity = new Vector2(initialVelocity.x, climbSlip);
         playerClimb.Slip();
-        
+
         Assert.AreEqual(initialVelocity.y, rb.velocity.y, 1f);
         yield return null;
     }
@@ -187,7 +187,7 @@ public class PlayModeTestScript : MonoBehaviour {
         float climbUpSpeed = 5f;
         initialVelocity = new Vector2(initialVelocity.x, climbUpSpeed);
         playerClimb.ClimbUp();
-        
+
         Assert.AreEqual(initialVelocity.y, rb.velocity.y, 1f);
         yield return null;
     }
@@ -198,7 +198,7 @@ public class PlayModeTestScript : MonoBehaviour {
         float climbDownSpeed = -9f;
         initialVelocity = new Vector2(initialVelocity.x, climbDownSpeed);
         playerClimb.ClimbDown();
-        
+
         Assert.AreEqual(initialVelocity.y, rb.velocity.y, 1f);
         yield return null;
     }
@@ -212,7 +212,7 @@ public class PlayModeTestScript : MonoBehaviour {
         Assert.IsTrue(collectable == null || collectable.Equals(null));
     }
 
-  
+
     //[UnityTest]
     //public IEnumerator TestDialogueStarted() {
     //    Animator dialogueAnimator = dialogueManager.GetComponent<Animator>();
