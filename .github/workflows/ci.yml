@@ -125,6 +125,38 @@ jobs:
           checkName: ${{ matrix.testMode }} Test Results
           coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
 
+      - name: Read user configuration
+        id: read-user-config
+        run: |
+          USER_CONFIG=$(cat .github/workflows/user_config.json)
+          echo "::set-output name=user-config::$USER_CONFIG"
+
+      - name: Extract user data
+        id: userdata
+        run: |
+          USER_CONFIG=$(cat .github/workflows/user_config.json)
+          GITHUB_ACTOR=$(echo "$GITHUB_ACTOR")
+          USER_NAME=$(echo "$USER_CONFIG" | jq -r ".users[] | select(.name == \"$GITHUB_ACTOR\") | .name")
+          USER_EMAIL=$(echo "$USER_CONFIG" | jq -r ".users[] | select(.name == \"$GITHUB_ACTOR\") | .email")
+          echo "::set-output name=username::$USER_NAME"
+          echo "::set-output name=useremail::$USER_EMAIL"
+    
+      - name: Git add changes
+        run: |
+          git add .
+
+      - name: Commit changes
+        run: |
+          if ! git diff --quiet HEAD; then
+            git config --global user.email "${{ steps.userdata.outputs.useremail }}"
+            git config --global user.name "${{ steps.userdata.outputs.username }}"
+            git commit -m "Apply code formatting"
+          fi
+      
+      - name: Push changes
+        run: |
+          git push || echo "Changes already pushed, skipping"
+
       - name: Clean up Docker
         run: docker system prune -af
       
