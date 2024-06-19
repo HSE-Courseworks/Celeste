@@ -11,19 +11,18 @@ on:
       - new-dev
 
 env:
-    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-    UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-    UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     strategy: 
       fail-fast: false
       matrix:
         projectPath:
-          -  ${{ github.workspace }}
+          - ${{ github.workspace }}
         testMode:
           - playmode
           - editmode
@@ -33,31 +32,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
-    
-      - name: Return license
-        uses: game-ci/unity-return-license@v2
-        if: always()
 
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
           path: Library
           key: ${{ runner.os }}-unity-${{ hashFiles('**/ProjectSettings/ProjectVersion.txt') }}
-
-      - name: Test runner
-        uses: game-ci/unity-test-runner@v4
-        id: gameTestStep
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          testMode: ${{ matrix.testMode }}
-          artifactsPath: ${{ matrix.testMode }}-artifacts
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ matrix.testMode }} Test Results
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v3
@@ -103,6 +83,45 @@ jobs:
       - name: Push changes
         run: |
           git push || echo "Changes already pushed, skipping"
+
+  build-and-test-push:
+    needs: build-and-test
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    strategy: 
+      fail-fast: false
+      matrix:
+        projectPath:
+          - ${{ github.workspace }}
+        testMode:
+          - playmode
+          - editmode
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      
+      - name: Return license
+        uses: game-ci/unity-return-license@v2
+        if: always()
+        
+      - name: Test runner
+        uses: game-ci/unity-test-runner@v4
+        id: gameTestStep
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          testMode: ${{ matrix.testMode }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: ${{ matrix.testMode }} Test Results
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
 
       - name: Clean up Docker
         run: docker system prune -af
