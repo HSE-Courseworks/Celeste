@@ -86,6 +86,15 @@ jobs:
         run: |
           git push || echo "Changes already pushed, skipping"
 
+      - name: Clean up Docker
+        run: docker system prune -af
+      
+      - name: Build project
+        uses: game-ci/unity-builder@v4
+        with:
+          path: ./Assets/Scenes/Level1.unity
+          targetPlatform: StandaloneWindows64
+
   build-and-test-push:
     needs: build-and-test
     if: github.event_name == 'push'
