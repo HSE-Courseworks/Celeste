@@ -76,9 +76,11 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --global user.email "${{ steps.userdata.outputs.useremail }}"
-          git config --global user.name "${{ steps.userdata.outputs.username }}"
-          git commit -m "Apply code formatting"
+          if ! git diff --quiet HEAD; then
+            git config --global user.email "${{ steps.userdata.outputs.useremail }}"
+            git config --global user.name "${{ steps.userdata.outputs.username }}"
+            git commit -m "Apply code formatting"
+          fi
       
       - name: Push changes
         run: |
