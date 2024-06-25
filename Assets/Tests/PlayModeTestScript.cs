@@ -48,7 +48,7 @@ public class PlayModeTestScript : MonoBehaviour {
         spriteRender = playerObject.GetComponent<SpriteRenderer>();
 
 
-        collectable = GameObject.Find("Collectable");
+        collectable = GameObject.FindGameObjectWithTag("Collectable");
         collectablePicker = GameObject.FindObjectOfType<Collectable_Picker>();
 
         dialogueManager = GameObject.FindObjectOfType<DialogueManager>();

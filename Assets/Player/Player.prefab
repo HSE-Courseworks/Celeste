@@ -401,6 +401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566c4d495f9dc0d4a8dbafbad387a0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Storage: {fileID: 0}
+  CollectableCounter: {fileID: 0}
 --- !u!114 &8903867073288422062
 MonoBehaviour:
   m_ObjectHideFlags: 0

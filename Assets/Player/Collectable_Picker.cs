@@ -29,11 +29,13 @@ public class Collectable_Picker : MonoBehaviour {
         if (collider.gameObject.tag == "Collectable") {
             string index = collider.gameObject.name;
             int id = Convert.ToInt32(index);
-            Storage.AddCollectable(id);
-            Score = Storage.GetCollectableCount();
-            CollectableCounter.text = 'x' + Score.ToString();
             Destroy(collider.gameObject);
-            StartShow();
+            if (Storage != null && CollectableCounter != null) {
+                Storage.AddCollectable(id);
+                Score = Storage.GetCollectableCount();
+                CollectableCounter.text = 'x' + Score.ToString();
+                StartShow();
+            }
         }
     }
 }
