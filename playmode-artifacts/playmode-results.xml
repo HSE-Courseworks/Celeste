@@ -1,78 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<test-run id="2" testcasecount="13" result="Passed" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2024-06-19 21:22:18Z" end-time="2024-06-19 21:22:49Z" duration="30.2948865">
-  <test-suite type="TestSuite" id="1000" name="DementiaTales" fullname="DementiaTales" runstate="Runnable" testcasecount="13" result="Passed" start-time="2024-06-19 21:22:18Z" end-time="2024-06-19 21:22:49Z" duration="30.294887" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+<test-run id="2" testcasecount="17" result="Passed" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2024-06-25 17:17:38Z" end-time="2024-06-25 17:18:23Z" duration="44.5526447">
+  <test-suite type="TestSuite" id="1000" name="DementiaTales" fullname="DementiaTales" runstate="Runnable" testcasecount="17" result="Passed" start-time="2024-06-25 17:17:38Z" end-time="2024-06-25 17:18:23Z" duration="44.552645" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
     <properties />
-    <test-suite type="Assembly" id="1015" name="Tests.dll" fullname="/github/workspace/Library/ScriptAssemblies/Tests.dll" runstate="Runnable" testcasecount="13" result="Passed" start-time="2024-06-19 21:22:18Z" end-time="2024-06-19 21:22:49Z" duration="30.286732" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <test-suite type="Assembly" id="1019" name="Tests.dll" fullname="/github/workspace/Library/ScriptAssemblies/Tests.dll" runstate="Runnable" testcasecount="17" result="Passed" start-time="2024-06-25 17:17:38Z" end-time="2024-06-25 17:18:23Z" duration="44.544063" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
       <properties>
-        <property name="_PID" value="1262" />
+        <property name="_PID" value="1267" />
         <property name="_APPDOMAIN" value="Unity Child Domain" />
         <property name="platform" value="PlayMode" />
       </properties>
-      <test-suite type="TestFixture" id="1001" name="PlayModeTestScript" fullname="PlayModeTestScript" classname="PlayModeTestScript" runstate="Runnable" testcasecount="13" result="Passed" start-time="2024-06-19 21:22:18Z" end-time="2024-06-19 21:22:49Z" duration="30.285001" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1001" name="PlayModeTestScript" fullname="PlayModeTestScript" classname="PlayModeTestScript" runstate="Runnable" testcasecount="17" result="Passed" start-time="2024-06-25 17:17:38Z" end-time="2024-06-25 17:18:23Z" duration="44.541780" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
         <output><![CDATA[You are trying to create a MonoBehaviour using the 'new' keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent(). Alternatively, your script can inherit from ScriptableObject or no base class at all
 ]]></output>
-        <test-case id="1014" name="TestCollectablePicker" fullname="PlayModeTestScript.TestCollectablePicker" methodname="TestCollectablePicker" classname="PlayModeTestScript" runstate="Runnable" seed="307205158" result="Passed" start-time="2024-06-19 21:22:18Z" end-time="2024-06-19 21:22:21Z" duration="2.591227" asserts="0">
+        <test-case id="1014" name="TestCollectablePicker" fullname="PlayModeTestScript.TestCollectablePicker" methodname="TestCollectablePicker" classname="PlayModeTestScript" runstate="Runnable" seed="2144636461" result="Passed" start-time="2024-06-25 17:17:38Z" end-time="2024-06-25 17:17:42Z" duration="3.475599" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1013" name="TestPlayerClimbDown" fullname="PlayModeTestScript.TestPlayerClimbDown" methodname="TestPlayerClimbDown" classname="PlayModeTestScript" runstate="Runnable" seed="238072466" result="Passed" start-time="2024-06-19 21:22:21Z" end-time="2024-06-19 21:22:23Z" duration="2.311529" asserts="0">
+        <test-case id="1013" name="TestPlayerClimbDown" fullname="PlayModeTestScript.TestPlayerClimbDown" methodname="TestPlayerClimbDown" classname="PlayModeTestScript" runstate="Runnable" seed="188387002" result="Passed" start-time="2024-06-25 17:17:42Z" end-time="2024-06-25 17:17:44Z" duration="2.292979" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1011" name="TestPlayerClimbSlip" fullname="PlayModeTestScript.TestPlayerClimbSlip" methodname="TestPlayerClimbSlip" classname="PlayModeTestScript" runstate="Runnable" seed="2093376192" result="Passed" start-time="2024-06-19 21:22:23Z" end-time="2024-06-19 21:22:26Z" duration="2.257269" asserts="0">
+        <test-case id="1011" name="TestPlayerClimbSlip" fullname="PlayModeTestScript.TestPlayerClimbSlip" methodname="TestPlayerClimbSlip" classname="PlayModeTestScript" runstate="Runnable" seed="727370726" result="Passed" start-time="2024-06-25 17:17:44Z" end-time="2024-06-25 17:17:46Z" duration="2.280008" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1012" name="TestPlayerClimbUp" fullname="PlayModeTestScript.TestPlayerClimbUp" methodname="TestPlayerClimbUp" classname="PlayModeTestScript" runstate="Runnable" seed="1700601628" result="Passed" start-time="2024-06-19 21:22:26Z" end-time="2024-06-19 21:22:28Z" duration="2.260234" asserts="0">
+        <test-case id="1012" name="TestPlayerClimbUp" fullname="PlayModeTestScript.TestPlayerClimbUp" methodname="TestPlayerClimbUp" classname="PlayModeTestScript" runstate="Runnable" seed="1734553966" result="Passed" start-time="2024-06-25 17:17:46Z" end-time="2024-06-25 17:17:48Z" duration="2.263505" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1007" name="TestPlayerDash" fullname="PlayModeTestScript.TestPlayerDash" methodname="TestPlayerDash" classname="PlayModeTestScript" runstate="Runnable" seed="794936236" result="Passed" start-time="2024-06-19 21:22:28Z" end-time="2024-06-19 21:22:30Z" duration="2.417715" asserts="0">
+        <test-case id="1007" name="TestPlayerDash" fullname="PlayModeTestScript.TestPlayerDash" methodname="TestPlayerDash" classname="PlayModeTestScript" runstate="Runnable" seed="695408744" result="Passed" start-time="2024-06-25 17:17:48Z" end-time="2024-06-25 17:17:51Z" duration="2.204016" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1009" name="TestPlayerFatigueJumpTick" fullname="PlayModeTestScript.TestPlayerFatigueJumpTick" methodname="TestPlayerFatigueJumpTick" classname="PlayModeTestScript" runstate="Runnable" seed="1429290070" result="Passed" start-time="2024-06-19 21:22:30Z" end-time="2024-06-19 21:22:33Z" duration="2.292592" asserts="0">
+        <test-case id="1009" name="TestPlayerFatigueJumpTick" fullname="PlayModeTestScript.TestPlayerFatigueJumpTick" methodname="TestPlayerFatigueJumpTick" classname="PlayModeTestScript" runstate="Runnable" seed="1822858293" result="Passed" start-time="2024-06-25 17:17:51Z" end-time="2024-06-25 17:17:53Z" duration="2.221594" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1010" name="TestPlayerFatigueNullify" fullname="PlayModeTestScript.TestPlayerFatigueNullify" methodname="TestPlayerFatigueNullify" classname="PlayModeTestScript" runstate="Runnable" seed="1671869031" result="Passed" start-time="2024-06-19 21:22:33Z" end-time="2024-06-19 21:22:35Z" duration="2.374157" asserts="0">
+        <test-case id="1010" name="TestPlayerFatigueNullify" fullname="PlayModeTestScript.TestPlayerFatigueNullify" methodname="TestPlayerFatigueNullify" classname="PlayModeTestScript" runstate="Runnable" seed="924506479" result="Passed" start-time="2024-06-25 17:17:53Z" end-time="2024-06-25 17:17:55Z" duration="2.305519" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1008" name="TestPlayerFatigueTick" fullname="PlayModeTestScript.TestPlayerFatigueTick" methodname="TestPlayerFatigueTick" classname="PlayModeTestScript" runstate="Runnable" seed="1843113772" result="Passed" start-time="2024-06-19 21:22:35Z" end-time="2024-06-19 21:22:37Z" duration="2.287555" asserts="0">
+        <test-case id="1008" name="TestPlayerFatigueTick" fullname="PlayModeTestScript.TestPlayerFatigueTick" methodname="TestPlayerFatigueTick" classname="PlayModeTestScript" runstate="Runnable" seed="1259010642" result="Passed" start-time="2024-06-25 17:17:55Z" end-time="2024-06-25 17:17:58Z" duration="2.329075" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1003" name="TestPlayerFlip" fullname="PlayModeTestScript.TestPlayerFlip" methodname="TestPlayerFlip" classname="PlayModeTestScript" runstate="Runnable" seed="273420778" result="Passed" start-time="2024-06-19 21:22:37Z" end-time="2024-06-19 21:22:39Z" duration="2.281959" asserts="0">
+        <test-case id="1003" name="TestPlayerFlip" fullname="PlayModeTestScript.TestPlayerFlip" methodname="TestPlayerFlip" classname="PlayModeTestScript" runstate="Runnable" seed="575051963" result="Passed" start-time="2024-06-25 17:17:58Z" end-time="2024-06-25 17:18:00Z" duration="2.258344" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1004" name="TestPlayerJumpAppliesForce" fullname="PlayModeTestScript.TestPlayerJumpAppliesForce" methodname="TestPlayerJumpAppliesForce" classname="PlayModeTestScript" runstate="Runnable" seed="1222924426" result="Passed" start-time="2024-06-19 21:22:39Z" end-time="2024-06-19 21:22:42Z" duration="2.280648" asserts="0">
+        <test-case id="1004" name="TestPlayerJumpAppliesForce" fullname="PlayModeTestScript.TestPlayerJumpAppliesForce" methodname="TestPlayerJumpAppliesForce" classname="PlayModeTestScript" runstate="Runnable" seed="732920152" result="Passed" start-time="2024-06-25 17:18:00Z" end-time="2024-06-25 17:18:02Z" duration="2.255122" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1005" name="TestPlayerJumpCanPullUp" fullname="PlayModeTestScript.TestPlayerJumpCanPullUp" methodname="TestPlayerJumpCanPullUp" classname="PlayModeTestScript" runstate="Runnable" seed="277847101" result="Passed" start-time="2024-06-19 21:22:42Z" end-time="2024-06-19 21:22:44Z" duration="2.281358" asserts="0">
+        <test-case id="1005" name="TestPlayerJumpCanPullUp" fullname="PlayModeTestScript.TestPlayerJumpCanPullUp" methodname="TestPlayerJumpCanPullUp" classname="PlayModeTestScript" runstate="Runnable" seed="1973282991" result="Passed" start-time="2024-06-25 17:18:02Z" end-time="2024-06-25 17:18:04Z" duration="2.332560" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1006" name="TestPlayerJumpNullifyGravity" fullname="PlayModeTestScript.TestPlayerJumpNullifyGravity" methodname="TestPlayerJumpNullifyGravity" classname="PlayModeTestScript" runstate="Runnable" seed="1196266363" result="Passed" start-time="2024-06-19 21:22:44Z" end-time="2024-06-19 21:22:46Z" duration="2.297318" asserts="0">
+        <test-case id="1006" name="TestPlayerJumpNullifyGravity" fullname="PlayModeTestScript.TestPlayerJumpNullifyGravity" methodname="TestPlayerJumpNullifyGravity" classname="PlayModeTestScript" runstate="Runnable" seed="364441408" result="Passed" start-time="2024-06-25 17:18:04Z" end-time="2024-06-25 17:18:07Z" duration="2.630216" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
         </test-case>
-        <test-case id="1002" name="TestPlayerMove" fullname="PlayModeTestScript.TestPlayerMove" methodname="TestPlayerMove" classname="PlayModeTestScript" runstate="Runnable" seed="448659641" result="Passed" start-time="2024-06-19 21:22:46Z" end-time="2024-06-19 21:22:49Z" duration="2.322056" asserts="0">
+        <test-case id="1002" name="TestPlayerMove" fullname="PlayModeTestScript.TestPlayerMove" methodname="TestPlayerMove" classname="PlayModeTestScript" runstate="Runnable" seed="2087913014" result="Passed" start-time="2024-06-25 17:18:07Z" end-time="2024-06-25 17:18:10Z" duration="2.688294" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1015" name="TestSceneMenuLoadApplication" fullname="PlayModeTestScript.TestSceneMenuLoadApplication" methodname="TestSceneMenuLoadApplication" classname="PlayModeTestScript" runstate="Runnable" seed="641194914" result="Passed" start-time="2024-06-25 17:18:10Z" end-time="2024-06-25 17:18:15Z" duration="4.963549" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1018" name="TestScenePauseMenuLoadMainMenu" fullname="PlayModeTestScript.TestScenePauseMenuLoadMainMenu" methodname="TestScenePauseMenuLoadMainMenu" classname="PlayModeTestScript" runstate="Runnable" seed="1354466007" result="Passed" start-time="2024-06-25 17:18:15Z" end-time="2024-06-25 17:18:18Z" duration="2.903709" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1016" name="TestScenePauseMenuPauseApplication" fullname="PlayModeTestScript.TestScenePauseMenuPauseApplication" methodname="TestScenePauseMenuPauseApplication" classname="PlayModeTestScript" runstate="Runnable" seed="1464849490" result="Passed" start-time="2024-06-25 17:18:18Z" end-time="2024-06-25 17:18:20Z" duration="2.818316" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+        </test-case>
+        <test-case id="1017" name="TestScenePauseMenuResumeApplication" fullname="PlayModeTestScript.TestScenePauseMenuResumeApplication" methodname="TestScenePauseMenuResumeApplication" classname="PlayModeTestScript" runstate="Runnable" seed="1070589946" result="Passed" start-time="2024-06-25 17:18:20Z" end-time="2024-06-25 17:18:23Z" duration="2.284348" asserts="0">
           <properties>
             <property name="_JOINTYPE" value="UnityCombinatorial" />
           </properties>
