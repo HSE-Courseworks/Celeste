@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<test-run id="2" testcasecount="0" result="Passed" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2024-06-19 21:05:06Z" end-time="2024-06-19 21:05:06Z" duration="0.0137446">
-  <test-suite type="TestSuite" id="1005" name="DementiaTales" fullname="DementiaTales" runstate="Runnable" testcasecount="0" result="Passed" start-time="2024-06-19 21:05:06Z" end-time="2024-06-19 21:05:06Z" duration="0.013745" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0">
+<test-run id="2" testcasecount="0" result="Passed" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2024-06-25 07:33:32Z" end-time="2024-06-25 07:33:32Z" duration="0.0075902">
+  <test-suite type="TestSuite" id="1005" name="DementiaTales" fullname="DementiaTales" runstate="Runnable" testcasecount="0" result="Passed" start-time="2024-06-25 07:33:32Z" end-time="2024-06-25 07:33:32Z" duration="0.007590" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0">
     <properties />
   </test-suite>
 </test-run>
